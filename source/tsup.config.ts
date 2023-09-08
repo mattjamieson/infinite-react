@@ -39,7 +39,7 @@ export const tsupConfig: Options = {
   minify: MINIFY,
   bundle: true,
   clean: false,
-  external: ['react', 'react-dom'],
+  external: ['react', 'react-dom', 'supports-color'],
   /**
    * tsup is a LOT more aggresive than esbuild in terms of externalizing dependencies.
    * This is a workaround to prevent it from not bundling the dependencies that need to be included in the bundle.

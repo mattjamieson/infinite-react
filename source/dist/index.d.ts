@@ -1,8 +1,8 @@
 import * as React$1 from 'react';
 import React__default, { CSSProperties, HTMLProps, RefCallback, MutableRefObject, MouseEvent, KeyboardEvent, ReactNode } from 'react';
 
-type SortDir = 1 | -1;
-type MultisortInfo<T> = {
+declare type SortDir = 1 | -1;
+declare type MultisortInfo<T> = {
     /**
      * The sorting direction
      */
@@ -22,7 +22,7 @@ type MultisortInfo<T> = {
      */
     valueGetter?: (item: T) => any;
 };
-type MultisortInfoAllowMultipleFields<T> = Omit<MultisortInfo<T>, 'field'> & {
+declare type MultisortInfoAllowMultipleFields<T> = Omit<MultisortInfo<T>, 'field'> & {
     field?: keyof T | (keyof T | ((item: T) => any))[];
 };
 declare const multisort: {
@@ -32,14 +32,14 @@ declare const multisort: {
     };
 };
 
-type VoidFn$1 = () => void;
-type Pair<KeyType, ValueType> = {
+declare type VoidFn$1 = () => void;
+declare type Pair<KeyType, ValueType> = {
     value?: ValueType;
     map?: Map<KeyType, Pair<KeyType, ValueType>>;
     length: number;
     revision?: number;
 };
-type DeepMapVisitFn<KeyType, ValueType> = (pair: Pair<KeyType, ValueType>, keys: KeyType[], next: VoidFn$1) => void;
+declare type DeepMapVisitFn<KeyType, ValueType> = (pair: Pair<KeyType, ValueType>, keys: KeyType[], next: VoidFn$1) => void;
 declare class DeepMap<KeyType, ValueType> {
     private map;
     private length;
@@ -64,7 +64,7 @@ declare class DeepMap<KeyType, ValueType> {
     has(keys: KeyType[]): boolean;
     private visitKey;
     visit: (fn: DeepMapVisitFn<KeyType, ValueType>) => void;
-    visitDepthFirst: (fn: (value: ValueType, keys: KeyType[], indexInGroup: number, next?: VoidFn$1) => void) => void;
+    visitDepthFirst: (fn: (value: ValueType, keys: KeyType[], indexInGroup: number, next?: VoidFn$1 | undefined) => void) => void;
     private visitWithNext;
     private getArray;
     valuesAt(keys: KeyType[]): ValueType[];
@@ -89,14 +89,14 @@ declare enum InfiniteTableActionType {
     SET_DRAGGING_COLUMN_ID = 8
 }
 
-type InfiniteTableAction = {
+declare type InfiniteTableAction = {
     type: InfiniteTableActionType;
     payload?: any;
 };
 
-type Renderable = React$1.ReactNode | JSX.Element;
+declare type Renderable = React$1.ReactNode | JSX.Element;
 
-type MenuIconProps = {
+declare type MenuIconProps = {
     lineWidth?: number;
     lineStyle?: React$1.CSSProperties;
     style?: React$1.CSSProperties;
@@ -106,7 +106,7 @@ type MenuIconProps = {
     menuVisible?: boolean;
     children?: React$1.ReactNode;
 };
-declare function MenuIcon(props: MenuIconProps): JSX.Element;
+declare function MenuIcon(props: MenuIconProps): React$1.JSX.Element;
 
 declare function useInfiniteHeaderCell<T>(): {
     dragging: boolean;
@@ -159,8 +159,8 @@ declare function useInfiniteColumnFilterEditor<T>(): {
 };
 
 declare const InfiniteTableClassName: string;
-declare const InfiniteTableComponent: React$1.MemoExoticComponent<(<T>() => JSX.Element)>;
-declare function InfiniteTable<T>(props: InfiniteTableProps<T>): JSX.Element;
+declare const InfiniteTableComponent: React$1.MemoExoticComponent<(<T>() => React$1.JSX.Element)>;
+declare function InfiniteTable<T>(props: InfiniteTableProps<T>): React$1.JSX.Element;
 declare namespace InfiniteTable {
     var defaultProps: {
         rowHeight: number;
@@ -173,7 +173,7 @@ interface Size {
     height: number;
 }
 
-type InfiniteTableBaseCellProps<T> = {
+declare type InfiniteTableBaseCellProps<T> = {
     column: InfiniteTableComputedColumn<T>;
     align?: InfiniteTableColumnAlignValues;
     rowId?: any;
@@ -189,18 +189,18 @@ type InfiniteTableBaseCellProps<T> = {
     cssPosition?: CSSProperties['position'];
     domRef?: React.RefCallback<HTMLElement>;
 };
-type InfiniteTableCellProps<T> = ({
+declare type InfiniteTableCellProps<T> = ({
     cellType: 'header';
 } & InfiniteTableBaseCellProps<T>) | ({
     cellType: 'body';
 } & InfiniteTableBaseCellProps<T>);
 
-type DiscriminatedUnion<A, B> = (A & {
+declare type DiscriminatedUnion<A, B> = (A & {
     [K in keyof B]?: undefined;
 }) | (B & {
     [K in keyof A]?: undefined;
 });
-type KeyOfNoSymbol<T> = Exclude<keyof T, Symbol>;
+declare type KeyOfNoSymbol<T> = Exclude<keyof T, Symbol>;
 /**
  * Restrict using either exclusively the keys of T or exclusively the keys of U.
  *
@@ -213,7 +213,7 @@ type KeyOfNoSymbol<T> = Exclude<keyof T, Symbol>;
  *
  * @see https://github.com/maninak/ts-xor/tree/master#description
  */
-type XOR<T, U> = T | U extends object ? Prettify<Without<T, U> & U> | Prettify<Without<U, T> & T> : T | U;
+declare type XOR<T, U> = T | U extends object ? Prettify<Without<T, U> & U> | Prettify<Without<U, T> & T> : T | U;
 /**
  * Useful if applying XOR on more than 2 types.
  * It comes with the penalty of having the types wrapped in an array
@@ -229,26 +229,26 @@ type XOR<T, U> = T | U extends object ? Prettify<Without<T, U> & U> | Prettify<W
  * ```
  * @see https://github.com/Microsoft/TypeScript/issues/14094#issuecomment-723571692
  */
-type AllXOR<T extends any[]> = T extends [infer Only] ? Only : T extends [infer A, infer B, ...infer Rest] ? AllXOR<[XOR<A, B>, ...Rest]> : never;
+declare type AllXOR<T extends any[]> = T extends [infer Only] ? Only : T extends [infer A, infer B, ...infer Rest] ? AllXOR<[XOR<A, B>, ...Rest]> : never;
 /**
  * Get the keys of T without any keys of U.
  */
-type Without<T, U> = {
+declare type Without<T, U> = {
     [P in Exclude<keyof T, keyof U>]?: never;
 };
 /**
  * Resolve mapped types and show the derived keys and their types when hovering in
  * IDEs, instead of just showing the names those mapped types are defined with.
  */
-type Prettify<T> = {
+declare type Prettify<T> = {
     [K in keyof T]: T[K];
 } & {};
 
-type NonUndefined<T> = T extends undefined ? never : T;
+declare type NonUndefined<T> = T extends undefined ? never : T;
 
-type InfiniteTableToggleGroupRowFn = (groupKeys: any[]) => void;
-type InfiniteTableSelectRowFn = (id: any) => void;
-type InfiniteTableColumnHeaderParam<DATA_TYPE, COL_TYPE = InfiniteTableComputedColumn<DATA_TYPE>> = {
+declare type InfiniteTableToggleGroupRowFn = (groupKeys: any[]) => void;
+declare type InfiniteTableSelectRowFn = (id: any) => void;
+declare type InfiniteTableColumnHeaderParam<DATA_TYPE, COL_TYPE = InfiniteTableComputedColumn<DATA_TYPE>> = {
     dragging: boolean;
     column: COL_TYPE;
     columnsMap: Map<string, COL_TYPE>;
@@ -275,13 +275,13 @@ type InfiniteTableColumnHeaderParam<DATA_TYPE, COL_TYPE = InfiniteTableComputedC
 } | {
     insideColumnMenu: true;
 });
-type InfiniteTableColumnRenderBag = {
+declare type InfiniteTableColumnRenderBag = {
     value: string | number | Renderable;
     groupIcon?: Renderable;
     all?: Renderable;
     selectionCheckBox?: Renderable;
 };
-type InfiniteTableColumnRenderParamBase<DATA_TYPE, COL_TYPE = InfiniteTableComputedColumn<DATA_TYPE>> = {
+declare type InfiniteTableColumnRenderParamBase<DATA_TYPE, COL_TYPE = InfiniteTableComputedColumn<DATA_TYPE>> = {
     domRef: InfiniteTableCellProps<DATA_TYPE>['domRef'];
     value: string | number | Renderable;
     align: InfiniteTableColumnAlignValues;
@@ -309,74 +309,74 @@ type InfiniteTableColumnRenderParamBase<DATA_TYPE, COL_TYPE = InfiniteTableCompu
     rootGroupBy: DataSourceState<DATA_TYPE>['groupBy'];
     pivotBy?: DataSourceState<DATA_TYPE>['pivotBy'];
 };
-type InfiniteTableColumnCellContextType<DATA_TYPE, COL_TYPE = InfiniteTableComputedColumn<DATA_TYPE>> = InfiniteTableColumnRenderParamBase<DATA_TYPE, COL_TYPE> & InfiniteTableRowInfoDataDiscriminator<DATA_TYPE>;
-type InfiniteTableColumnRenderValueParam<DATA_TYPE, COL_TYPE = InfiniteTableComputedColumn<DATA_TYPE>> = InfiniteTableColumnCellContextType<DATA_TYPE, COL_TYPE>;
-type InfiniteTableColumnRowspanParam<DATA_TYPE, COL_TYPE = InfiniteTableComputedColumn<DATA_TYPE>> = {
+declare type InfiniteTableColumnCellContextType<DATA_TYPE, COL_TYPE = InfiniteTableComputedColumn<DATA_TYPE>> = InfiniteTableColumnRenderParamBase<DATA_TYPE, COL_TYPE> & InfiniteTableRowInfoDataDiscriminator<DATA_TYPE>;
+declare type InfiniteTableColumnRenderValueParam<DATA_TYPE, COL_TYPE = InfiniteTableComputedColumn<DATA_TYPE>> = InfiniteTableColumnCellContextType<DATA_TYPE, COL_TYPE>;
+declare type InfiniteTableColumnRowspanParam<DATA_TYPE, COL_TYPE = InfiniteTableComputedColumn<DATA_TYPE>> = {
     rowInfo: InfiniteTableRowInfo<DATA_TYPE>;
     data: DATA_TYPE | Partial<DATA_TYPE> | null;
     dataArray: InfiniteTableRowInfo<DATA_TYPE>[];
     rowIndex: number;
     column: COL_TYPE;
 };
-type InfiniteTableColumnRenderFunctionForGroupRows<DATA_TYPE, COL_TYPE = InfiniteTableComputedColumn<DATA_TYPE>> = (renderParams: InfiniteTableColumnCellContextType<DATA_TYPE, COL_TYPE> & {
+declare type InfiniteTableColumnRenderFunctionForGroupRows<DATA_TYPE, COL_TYPE = InfiniteTableComputedColumn<DATA_TYPE>> = (renderParams: InfiniteTableColumnCellContextType<DATA_TYPE, COL_TYPE> & {
     isGroupRow: true;
 }) => Renderable | null;
-type InfiniteTableColumnRenderFunctionForNormalRows<DATA_TYPE, COL_TYPE = InfiniteTableComputedColumn<DATA_TYPE>> = (renderParams: InfiniteTableColumnCellContextType<DATA_TYPE, COL_TYPE> & {
+declare type InfiniteTableColumnRenderFunctionForNormalRows<DATA_TYPE, COL_TYPE = InfiniteTableComputedColumn<DATA_TYPE>> = (renderParams: InfiniteTableColumnCellContextType<DATA_TYPE, COL_TYPE> & {
     isGroupRow: false;
 }) => Renderable | null;
-type InfiniteTableColumnRenderFunction<DATA_TYPE, COL_TYPE = InfiniteTableComputedColumn<DATA_TYPE>> = (renderParams: InfiniteTableColumnCellContextType<DATA_TYPE, COL_TYPE>) => Renderable | null;
-type InfiniteTableColumnHeaderRenderFunction<T> = (headerParams: InfiniteTableColumnHeaderParam<T>) => Renderable;
-type InfiniteTableColumnContentFocusable<T> = boolean | InfiniteTableColumnContentFocusableFn<T>;
-type InfiniteTableColumnEditable<T> = boolean | InfiniteTableColumnEditableFn<T>;
-type InfiniteTableColumnContentFocusableFn<T> = (params: InfiniteTableColumnContentFocusableParams<T>) => boolean;
-type InfiniteTableColumnEditableFn<T> = (params: InfiniteTableColumnEditableParams<T>) => boolean | Promise<boolean>;
-type InfiniteTableColumnContentFocusableParams<T> = InfiniteTableRowInfoDataDiscriminatorWithColumnAndApis<T>;
-type InfiniteTableColumnEditableParams<T> = InfiniteTableColumnContentFocusableParams<T>;
-type InfiniteTableColumnGetValueToPersistParams<T> = InfiniteTableColumnEditableParams<T> & {
+declare type InfiniteTableColumnRenderFunction<DATA_TYPE, COL_TYPE = InfiniteTableComputedColumn<DATA_TYPE>> = (renderParams: InfiniteTableColumnCellContextType<DATA_TYPE, COL_TYPE>) => Renderable | null;
+declare type InfiniteTableColumnHeaderRenderFunction<T> = (headerParams: InfiniteTableColumnHeaderParam<T>) => Renderable;
+declare type InfiniteTableColumnContentFocusable<T> = boolean | InfiniteTableColumnContentFocusableFn<T>;
+declare type InfiniteTableColumnEditable<T> = boolean | InfiniteTableColumnEditableFn<T>;
+declare type InfiniteTableColumnContentFocusableFn<T> = (params: InfiniteTableColumnContentFocusableParams<T>) => boolean;
+declare type InfiniteTableColumnEditableFn<T> = (params: InfiniteTableColumnEditableParams<T>) => boolean | Promise<boolean>;
+declare type InfiniteTableColumnContentFocusableParams<T> = InfiniteTableRowInfoDataDiscriminatorWithColumnAndApis<T>;
+declare type InfiniteTableColumnEditableParams<T> = InfiniteTableColumnContentFocusableParams<T>;
+declare type InfiniteTableColumnGetValueToPersistParams<T> = InfiniteTableColumnEditableParams<T> & {
     initialValue: any;
 };
-type InfiniteTableColumnAlignValues = 'start' | 'center' | 'end';
-type InfiniteTableColumnVerticalAlignValues = 'start' | 'center' | 'end';
-type InfiniteTableColumnHeader<T> = Renderable | InfiniteTableColumnHeaderRenderFunction<T>;
-type InfiniteTableDataTypeNames = 'string' | 'number' | 'date' | string;
-type InfiniteTableColumnTypeNames = 'string' | 'number' | 'date' | string;
-type InfiniteTableColumnStyleFnParams<T> = {
+declare type InfiniteTableColumnAlignValues = 'start' | 'center' | 'end';
+declare type InfiniteTableColumnVerticalAlignValues = 'start' | 'center' | 'end';
+declare type InfiniteTableColumnHeader<T> = Renderable | InfiniteTableColumnHeaderRenderFunction<T>;
+declare type InfiniteTableDataTypeNames = 'string' | 'number' | 'date' | string;
+declare type InfiniteTableColumnTypeNames = 'string' | 'number' | 'date' | string;
+declare type InfiniteTableColumnStyleFnParams<T> = {
     value: Renderable;
     column: InfiniteTableComputedColumn<T>;
     inEdit: boolean;
     editError: InfiniteTableColumnRenderParamBase<T>['editError'];
 } & InfiniteTableRowInfoDataDiscriminator<T>;
-type InfiniteTableColumnStyleFn<T> = (params: InfiniteTableColumnStyleFnParams<T>) => undefined | React__default.CSSProperties;
-type InfiniteTableColumnHeaderClassNameFn<T> = (params: InfiniteTableColumnHeaderParam<T>) => undefined | string;
-type InfiniteTableColumnHeaderStyleFn<T> = (params: InfiniteTableColumnHeaderParam<T>) => undefined | React__default.CSSProperties;
-type InfiniteTableColumnClassNameFn<T> = (params: InfiniteTableColumnStyleFnParams<T>) => undefined | string;
-type InfiniteTableColumnStyle<T> = CSSProperties | InfiniteTableColumnStyleFn<T>;
-type InfiniteTableColumnAlign<T> = InfiniteTableColumnAlignValues | InfiniteTableColumnAlignFn<T>;
-type InfiniteTableColumnVerticalAlign<T> = InfiniteTableColumnVerticalAlignValues | InfiniteTableColumnVerticalAlignFn<T>;
-type InfiniteTableColumnAlignFn<T> = (params: InfiniteTableColumnAlignFnParams<T>) => InfiniteTableColumnAlignValues;
-type InfiniteTableColumnAlignFnParams<T> = XOR<{
+declare type InfiniteTableColumnStyleFn<T> = (params: InfiniteTableColumnStyleFnParams<T>) => undefined | React__default.CSSProperties;
+declare type InfiniteTableColumnHeaderClassNameFn<T> = (params: InfiniteTableColumnHeaderParam<T>) => undefined | string;
+declare type InfiniteTableColumnHeaderStyleFn<T> = (params: InfiniteTableColumnHeaderParam<T>) => undefined | React__default.CSSProperties;
+declare type InfiniteTableColumnClassNameFn<T> = (params: InfiniteTableColumnStyleFnParams<T>) => undefined | string;
+declare type InfiniteTableColumnStyle<T> = CSSProperties | InfiniteTableColumnStyleFn<T>;
+declare type InfiniteTableColumnAlign<T> = InfiniteTableColumnAlignValues | InfiniteTableColumnAlignFn<T>;
+declare type InfiniteTableColumnVerticalAlign<T> = InfiniteTableColumnVerticalAlignValues | InfiniteTableColumnVerticalAlignFn<T>;
+declare type InfiniteTableColumnAlignFn<T> = (params: InfiniteTableColumnAlignFnParams<T>) => InfiniteTableColumnAlignValues;
+declare type InfiniteTableColumnAlignFnParams<T> = XOR<{
     isHeader: true;
     column: InfiniteTableComputedColumn<T>;
 }, InfiniteTableColumnStyleFnParams<T> & {
     isHeader: false;
 }>;
-type InfiniteTableColumnVerticalAlignFn<T> = (params: InfiniteTableColumnAlignFnParams<T>) => InfiniteTableColumnVerticalAlignValues;
-type InfiniteTableColumnHeaderStyle<T> = CSSProperties | InfiniteTableColumnHeaderStyleFn<T>;
-type InfiniteTableColumnClassName<T> = string | InfiniteTableColumnClassNameFn<T>;
-type InfiniteTableColumnHeaderClassName<T> = string | InfiniteTableColumnHeaderClassNameFn<T>;
-type InfiniteTableColumnValueGetterParams<T> = ValueGetterParams<T>;
-type InfiniteTableColumnValueFormatterParams<T> = InfiniteTableRowInfoDataDiscriminator<T>;
-type InfiniteTableColumnValueGetter<T, VALUE_GETTER_TYPE = string | number | boolean | Date | null | undefined> = (params: InfiniteTableColumnValueGetterParams<T>) => VALUE_GETTER_TYPE;
-type InfiniteTableColumnValueFormatter<T, VALUE_FORMATTER_TYPE = string | number | boolean | Date | null | undefined> = (params: InfiniteTableColumnValueFormatterParams<T>) => VALUE_FORMATTER_TYPE;
-type InfiniteTableColumnRowspanFn<T> = (params: InfiniteTableColumnRowspanParam<T>) => number;
-type InfiniteTableColumnComparer<T> = (a: T, b: T) => number;
-type InfiniteTableColumnSortableFn<T> = (context: {
+declare type InfiniteTableColumnVerticalAlignFn<T> = (params: InfiniteTableColumnAlignFnParams<T>) => InfiniteTableColumnVerticalAlignValues;
+declare type InfiniteTableColumnHeaderStyle<T> = CSSProperties | InfiniteTableColumnHeaderStyleFn<T>;
+declare type InfiniteTableColumnClassName<T> = string | InfiniteTableColumnClassNameFn<T>;
+declare type InfiniteTableColumnHeaderClassName<T> = string | InfiniteTableColumnHeaderClassNameFn<T>;
+declare type InfiniteTableColumnValueGetterParams<T> = ValueGetterParams<T>;
+declare type InfiniteTableColumnValueFormatterParams<T> = InfiniteTableRowInfoDataDiscriminator<T>;
+declare type InfiniteTableColumnValueGetter<T, VALUE_GETTER_TYPE = string | number | boolean | Date | null | undefined> = (params: InfiniteTableColumnValueGetterParams<T>) => VALUE_GETTER_TYPE;
+declare type InfiniteTableColumnValueFormatter<T, VALUE_FORMATTER_TYPE = string | number | boolean | Date | null | undefined> = (params: InfiniteTableColumnValueFormatterParams<T>) => VALUE_FORMATTER_TYPE;
+declare type InfiniteTableColumnRowspanFn<T> = (params: InfiniteTableColumnRowspanParam<T>) => number;
+declare type InfiniteTableColumnComparer<T> = (a: T, b: T) => number;
+declare type InfiniteTableColumnSortableFn<T> = (context: {
     api: InfiniteTableApi<T>;
     columnApi: InfiniteTableColumnApi<T>;
     column: InfiniteTableComputedColumn<T>;
     columns: Map<string, InfiniteTableComputedColumn<T>>;
 }) => boolean;
-type InfiniteTableColumnSortable<T> = boolean | InfiniteTableColumnSortableFn<T>;
+declare type InfiniteTableColumnSortable<T> = boolean | InfiniteTableColumnSortableFn<T>;
 /**
  * Defines a column in the table.
  *
@@ -384,7 +384,7 @@ type InfiniteTableColumnSortable<T> = boolean | InfiniteTableColumnSortableFn<T>
  *
  * Can be bound to a field which is a `keyof DATA_TYPE`.
  */
-type InfiniteTableColumn<DATA_TYPE> = {
+declare type InfiniteTableColumn<DATA_TYPE> = {
     field?: KeyOfNoSymbol<DATA_TYPE>;
     valueGetter?: InfiniteTableColumnValueGetter<DATA_TYPE>;
     defaultSortable?: InfiniteTableColumnSortable<DATA_TYPE>;
@@ -442,12 +442,12 @@ type InfiniteTableColumn<DATA_TYPE> = {
         MenuIcon?: (props: MenuIconProps) => JSX.Element | null;
     };
 };
-type InfiniteTableGeneratedGroupColumn<T> = Omit<InfiniteTableColumn<T>, 'defaultSortable'> & {
+declare type InfiniteTableGeneratedGroupColumn<T> = Omit<InfiniteTableColumn<T>, 'defaultSortable'> & {
     groupByForColumn: GroupBy<T> | GroupBy<T>[];
     id?: string;
 };
-type InfiniteTablePivotColumn<T> = InfiniteTableColumn<T> & ColumnTypeWithInherit<Partial<InfiniteTablePivotFinalColumnVariant<T, any>>>;
-type InfiniteTablePivotFinalColumnGroup<DataType, KeyType extends any = any> = InfiniteTableColumnGroup & {
+declare type InfiniteTablePivotColumn<T> = InfiniteTableColumn<T> & ColumnTypeWithInherit<Partial<InfiniteTablePivotFinalColumnVariant<T, any>>>;
+declare type InfiniteTablePivotFinalColumnGroup<DataType, KeyType extends any = any> = InfiniteTableColumnGroup & {
     pivotBy: DataSourcePivotBy<DataType>[];
     pivotTotalColumnGroup?: true;
     pivotGroupKeys: KeyType[];
@@ -455,7 +455,7 @@ type InfiniteTablePivotFinalColumnGroup<DataType, KeyType extends any = any> = I
     pivotGroupKey: KeyType;
     pivotIndex: number;
 };
-type InfiniteTablePivotFinalColumn<DataType, KeyType extends any = any> = InfiniteTableColumn<DataType> & {
+declare type InfiniteTablePivotFinalColumn<DataType, KeyType extends any = any> = InfiniteTableColumn<DataType> & {
     pivotBy: DataSourcePivotBy<DataType>[];
     pivotColumn: true;
     pivotTotalColumn: boolean;
@@ -466,8 +466,8 @@ type InfiniteTablePivotFinalColumn<DataType, KeyType extends any = any> = Infini
     pivotIndex: number;
     pivotGroupKey: KeyType;
 };
-type InfiniteTablePivotFinalColumnVariant<DataType, KeyType extends any = any> = InfiniteTablePivotFinalColumn<DataType, KeyType>;
-type InfiniteTableComputedColumnBase<T> = {
+declare type InfiniteTablePivotFinalColumnVariant<DataType, KeyType extends any = any> = InfiniteTablePivotFinalColumn<DataType, KeyType>;
+declare type InfiniteTableComputedColumnBase<T> = {
     computedFilterType: string;
     computedSortType: string | string[];
     computedDataType: string;
@@ -502,8 +502,8 @@ type InfiniteTableComputedColumnBase<T> = {
     colType: InfiniteTableColumnType<T>;
     id: string;
 };
-type InfiniteTableComputedColumn<T> = InfiniteTableColumn<T> & InfiniteTableComputedColumnBase<T> & Partial<InfiniteTablePivotFinalColumn<T>> & Partial<InfiniteTableGeneratedGroupColumn<T>>;
-type InfiniteTableComputedPivotFinalColumn<T> = InfiniteTableComputedColumn<T> & InfiniteTablePivotFinalColumn<T>;
+declare type InfiniteTableComputedColumn<T> = InfiniteTableColumn<T> & InfiniteTableComputedColumnBase<T> & Partial<InfiniteTablePivotFinalColumn<T>> & Partial<InfiniteTableGeneratedGroupColumn<T>>;
+declare type InfiniteTableComputedPivotFinalColumn<T> = InfiniteTableComputedColumn<T> & InfiniteTablePivotFinalColumn<T>;
 
 interface LogFn {
     (...args: any[]): LogFn;
@@ -519,21 +519,21 @@ interface ScrollPosition {
     scrollTop: number;
     scrollLeft: number;
 }
-type OnScrollFn = (scrollPosition: ScrollPosition) => void;
+declare type OnScrollFn = (scrollPosition: ScrollPosition) => void;
 
-type VoidFn = () => void;
+declare type VoidFn = () => void;
 
-type FixedPosition = false | 'start' | 'end';
-type SpanFunction = ({ rowIndex, colIndex, }: {
+declare type FixedPosition = false | 'start' | 'end';
+declare type SpanFunction = ({ rowIndex, colIndex, }: {
     rowIndex: number;
     colIndex: number;
 }) => number;
-type RenderRangeType = {
+declare type RenderRangeType = {
     startIndex: number;
     endIndex: number;
 };
-type ItemSizeFunction = (index: number) => number;
-type MatrixBrainOptions = {
+declare type ItemSizeFunction = (index: number) => number;
+declare type MatrixBrainOptions = {
     width: number;
     height: number;
     cols: number;
@@ -543,23 +543,23 @@ type MatrixBrainOptions = {
     rowspan?: SpanFunction;
     colspan?: SpanFunction;
 };
-type TableRenderRange = {
+declare type TableRenderRange = {
     start: [number, number];
     end: [number, number];
     rowFixed?: FixedPosition;
     colFixed?: FixedPosition;
 };
-type WhichDirection = {
+declare type WhichDirection = {
     horizontal?: boolean;
     vertical?: boolean;
 };
-type FnOnRenderRangeChange = (range: TableRenderRange) => void;
-type FnOnDirectionalRenderRangeChange = (range: [number, number]) => void;
-type FnOnRenderCountChange = ({ horizontal, vertical, }: {
+declare type FnOnRenderRangeChange = (range: TableRenderRange) => void;
+declare type FnOnDirectionalRenderRangeChange = (range: [number, number]) => void;
+declare type FnOnRenderCountChange = ({ horizontal, vertical, }: {
     horizontal: number;
     vertical: number;
 }) => void;
-type OnAvailableSizeChange = (size: Size) => void;
+declare type OnAvailableSizeChange = (size: Size) => void;
 declare class MatrixBrain extends Logger {
     private scrolling;
     private width;
@@ -781,8 +781,8 @@ declare class MatrixBrain extends Logger {
     destroy: () => void;
 }
 
-type RowSelectionStateItem = (any | any[])[];
-type RowSelectionStateObject = {
+declare type RowSelectionStateItem = (any | any[])[];
+declare type RowSelectionStateObject = {
     selectedRows: RowSelectionStateItem;
     deselectedRows: RowSelectionStateItem;
     defaultSelection: boolean;
@@ -795,7 +795,7 @@ type RowSelectionStateObject = {
     selectedRows: RowSelectionStateItem;
     deselectedRows?: RowSelectionStateItem;
 };
-type RowSelectionStateConfig<T> = {
+declare type RowSelectionStateConfig<T> = {
     groupBy: DataSourceState<T>['groupBy'];
     groupDeepMap: DataSourceState<T>['groupDeepMap'];
     toPrimaryKey: DataSourceState<T>['toPrimaryKey'];
@@ -804,8 +804,8 @@ type RowSelectionStateConfig<T> = {
     lazyLoad: boolean;
     onlyUsePrimaryKeys: boolean;
 };
-type GetRowSelectionStateConfig<T> = () => RowSelectionStateConfig<T>;
-type RowSelectionStateOverride = {
+declare type GetRowSelectionStateConfig<T> = () => RowSelectionStateConfig<T>;
+declare type RowSelectionStateOverride = {
     getGroupKeysForPrimaryKey: RowSelectionState<any>['getGroupKeysForPrimaryKey'];
     getGroupByLength: RowSelectionState<any>['getGroupByLength'];
     getGroupCount: RowSelectionState<any>['getGroupCount'];
@@ -889,7 +889,7 @@ declare class RowSelectionState<T = any> {
     };
 }
 
-type MultiRowSelectorOptions = {
+declare type MultiRowSelectorOptions = {
     getIdForIndex: (index: number) => string | number;
 };
 declare class MultiRowSelector {
@@ -945,12 +945,12 @@ interface InfiniteTableComputedValues<T> {
     columnSize: (colIndex: number) => number;
 }
 
-type PointCoords = {
+declare type PointCoords = {
     top: number;
     left: number;
 };
 
-type TableRenderCellFnParam = {
+declare type TableRenderCellFnParam = {
     domRef: RefCallback<HTMLElement>;
     rowIndex: number;
     colIndex: number;
@@ -966,7 +966,7 @@ type TableRenderCellFnParam = {
     onMouseEnter: VoidFunction;
     onMouseLeave: VoidFunction;
 };
-type TableRenderCellFn = (param: TableRenderCellFnParam) => Renderable;
+declare type TableRenderCellFn = (param: TableRenderCellFnParam) => Renderable;
 declare class ReactHeadlessTableRenderer extends Logger {
     private brain;
     private destroyed;
@@ -1042,34 +1042,34 @@ declare class ReactHeadlessTableRenderer extends Logger {
     reset(): void;
 }
 
-type ComponentStateContext<T_STATE, T_ACTIONS> = {
+declare type ComponentStateContext<T_STATE, T_ACTIONS> = {
     getComponentState: () => T_STATE;
     componentState: T_STATE;
     componentActions: T_ACTIONS;
 };
-type ComponentStateGeneratedActions<T_STATE> = {
+declare type ComponentStateGeneratedActions<T_STATE> = {
     [k in keyof T_STATE]: T_STATE[k] | React.SetStateAction<T_STATE[k]>;
 };
-type ComponentInterceptedActions<T_STATE> = {
+declare type ComponentInterceptedActions<T_STATE> = {
     [k in keyof T_STATE]?: (value: T_STATE[k], { actions, state, }: {
         actions: ComponentStateGeneratedActions<T_STATE>;
         state: T_STATE;
     }) => void | boolean;
 };
-type ComponentMappedCallbacks<T_STATE> = {
+declare type ComponentMappedCallbacks<T_STATE> = {
     [k in keyof T_STATE]: (value: T_STATE[k], state: T_STATE) => {
         callbackName: string;
         callbackParams: any[];
     };
 };
-type ComponentStateActions<T_STATE> = ComponentStateGeneratedActions<T_STATE>;
+declare type ComponentStateActions<T_STATE> = ComponentStateGeneratedActions<T_STATE>;
 
-type CellPosition = {
+declare type CellPosition = {
     rowIndex: number;
     colIndex: number;
 };
 
-type SubscriptionCallbackOnChangeFn<T> = (node: T | null) => void;
+declare type SubscriptionCallbackOnChangeFn<T> = (node: T | null) => void;
 interface SubscriptionCallback<T> {
     (node: T, callback?: () => void): void;
     get: () => T | null;
@@ -1087,17 +1087,17 @@ declare class ScrollListener {
     destroy: () => void;
 }
 
-type CellContextMenuLocation = {
+declare type CellContextMenuLocation = {
     rowId: any;
     rowIndex: number;
     columnId: string;
     colIndex: number;
 };
-type CellContextMenuLocationWithEvent = CellContextMenuLocation & {
+declare type CellContextMenuLocationWithEvent = CellContextMenuLocation & {
     event: React.MouseEvent;
     target: HTMLElement;
 };
-type ContextMenuLocationWithEvent = Partial<CellContextMenuLocation> & {
+declare type ContextMenuLocationWithEvent = Partial<CellContextMenuLocation> & {
     event: React.MouseEvent;
     target: HTMLElement;
 };
@@ -1174,9 +1174,9 @@ interface InfiniteTableSetupState<T> {
         cancelled?: boolean;
     };
 }
-type InfiniteTableColumnGroupsDepthsMap = Map<string, number>;
-type InfiniteTablePropPivotTotalColumnPosition = false | 'start' | 'end';
-type InfiniteTablePropPivotGrandTotalColumnPosition = InfiniteTablePropPivotTotalColumnPosition;
+declare type InfiniteTableColumnGroupsDepthsMap = Map<string, number>;
+declare type InfiniteTablePropPivotTotalColumnPosition = false | 'start' | 'end';
+declare type InfiniteTablePropPivotGrandTotalColumnPosition = InfiniteTablePropPivotTotalColumnPosition;
 interface InfiniteTableMappedState<T> {
     id: InfiniteTableProps<T>['id'];
     scrollTopKey: InfiniteTableProps<T>['scrollTopKey'];
@@ -1278,12 +1278,12 @@ interface InfiniteTableDerivedState<T> {
     columnHeaderHeightCSSVar: string;
     controlledColumnVisibility: boolean;
 }
-type InfiniteTableActions<T> = ComponentStateActions<InfiniteTableState<T>>;
+declare type InfiniteTableActions<T> = ComponentStateActions<InfiniteTableState<T>>;
 interface InfiniteTableState<T> extends InfiniteTableMappedState<T>, InfiniteTableDerivedState<T>, InfiniteTableSetupState<T> {
 }
 
-type ArrayOfIds = Pick<InfiniteTable_RowInfoBase<any>, 'id'>[];
-type InfiniteTableSelectionApi = {
+declare type ArrayOfIds = Pick<InfiniteTable_RowInfoBase<any>, 'id'>[];
+declare type InfiniteTableSelectionApi = {
     get allRowsSelected(): boolean;
     isRowSelected(pk: any, groupKeys?: any[]): boolean;
     isRowDeselected(pk: any, groupKeys?: any[]): boolean;
@@ -1299,7 +1299,7 @@ type InfiniteTableSelectionApi = {
     deselectAll(): void;
 };
 
-type InfiniteTableEventHandlerContext<T> = {
+declare type InfiniteTableEventHandlerContext<T> = {
     getComputed: () => InfiniteTableComputedValues<T>;
     getState: () => InfiniteTableState<T>;
     actions: InfiniteTableActions<T>;
@@ -1309,15 +1309,15 @@ type InfiniteTableEventHandlerContext<T> = {
     api: InfiniteTableApi<T>;
     dataSourceApi: DataSourceApi<T>;
 };
-type InfiniteTableKeyboardEventHandlerContext<T> = InfiniteTableEventHandlerContext<T>;
-type InfiniteTableCellClickEventHandlerContext<T> = InfiniteTableEventHandlerContext<T> & {
+declare type InfiniteTableKeyboardEventHandlerContext<T> = InfiniteTableEventHandlerContext<T>;
+declare type InfiniteTableCellClickEventHandlerContext<T> = InfiniteTableEventHandlerContext<T> & {
     rowIndex: number;
     colIndex: number;
     column: InfiniteTableComputedColumn<T>;
     columnApi: InfiniteTableColumnApi<T>;
 };
 
-type OnCellClickContext<T> = InfiniteTableCellClickEventHandlerContext<T> & InfiniteTableKeyboardEventHandlerContext<T>;
+declare type OnCellClickContext<T> = InfiniteTableCellClickEventHandlerContext<T> & InfiniteTableKeyboardEventHandlerContext<T>;
 
 interface InfiniteTableContextValue<T> {
     api: InfiniteTableApi<T>;
@@ -1343,13 +1343,13 @@ interface InfiniteTableCellContext<T> {
     columnApi: InfiniteTableColumnApi<T>;
 }
 
-type ValueGetterParams<T> = {
+declare type ValueGetterParams<T> = {
     data: T;
     field?: keyof T;
 };
-type GroupKeyType$1<T extends any = any> = T;
-type GroupByValueGetter<T> = (params: ValueGetterParams<T>) => any;
-type GroupBy<DataType, KeyType = any> = {
+declare type GroupKeyType$1<T extends any = any> = T;
+declare type GroupByValueGetter<T> = (params: ValueGetterParams<T>) => any;
+declare type GroupBy<DataType, KeyType = any> = {
     toKey?: (value: any, data: DataType) => GroupKeyType$1<KeyType>;
     column?: Partial<InfiniteTableGroupColumnBase<DataType>>;
 } & AllXOR<[
@@ -1367,12 +1367,12 @@ type GroupBy<DataType, KeyType = any> = {
     }
 ]>;
 
-type RenderRange = {
+declare type RenderRange = {
     renderStartIndex: number;
     renderEndIndex: number;
 };
 
-type DataSourceMutation<T> = {
+declare type DataSourceMutation<T> = {
     type: 'delete';
     primaryKey: any;
     originalData: T;
@@ -1409,8 +1409,8 @@ declare class DataSourceCache<DataType, PrimaryKeyType = string> {
     getMutations: () => Map<string, DataSourceMutation<DataType>[]>;
 }
 
-type BooleanDeepCollectionStateKeys<KeyType> = true | KeyType[][];
-type BooleanDeepCollectionStateObject<KeyType> = {
+declare type BooleanDeepCollectionStateKeys<KeyType> = true | KeyType[][];
+declare type BooleanDeepCollectionStateObject<KeyType> = {
     positiveItems: BooleanDeepCollectionStateKeys<KeyType>;
     negativeItems: BooleanDeepCollectionStateKeys<KeyType>;
 };
@@ -1484,15 +1484,15 @@ interface DataSourceDataParams<T> {
     __cursorId?: DataSourceSetupState<T>['cursorId'];
     changes?: DataSourceDataParamsChanges<T>;
 }
-type DataSourceDataParamsChanges<T> = Partial<Record<keyof Omit<DataSourceDataParams<T>, 'originalDataArray' | 'changes'>, true>>;
-type DataSourceSingleSortInfo<T> = MultisortInfoAllowMultipleFields<T> & {
+declare type DataSourceDataParamsChanges<T> = Partial<Record<keyof Omit<DataSourceDataParams<T>, 'originalDataArray' | 'changes'>, true>>;
+declare type DataSourceSingleSortInfo<T> = MultisortInfoAllowMultipleFields<T> & {
     id?: string;
 };
-type DataSourceGroupBy<T> = GroupBy<T, any>;
-type DataSourcePivotBy<T> = PivotBy<T, any>;
-type DataSourceSortInfo<T> = null | DataSourceSingleSortInfo<T> | DataSourceSingleSortInfo<T>[];
-type DataSourcePropSortInfo<T> = DataSourceSortInfo<T>;
-type DataSourceRemoteData<T> = {
+declare type DataSourceGroupBy<T> = GroupBy<T, any>;
+declare type DataSourcePivotBy<T> = PivotBy<T, any>;
+declare type DataSourceSortInfo<T> = null | DataSourceSingleSortInfo<T> | DataSourceSingleSortInfo<T>[];
+declare type DataSourcePropSortInfo<T> = DataSourceSortInfo<T>;
+declare type DataSourceRemoteData<T> = {
     data: T[] | LazyGroupDataItem<T>[];
     mappings?: DataSourceMappings;
     cache?: boolean;
@@ -1501,14 +1501,14 @@ type DataSourceRemoteData<T> = {
     totalCountUnfiltered?: number;
     livePaginationCursor?: DataSourceLivePaginationCursorValue;
 };
-type DataSourceData<T> = T[] | DataSourceRemoteData<T> | Promise<T[] | DataSourceRemoteData<T>> | ((dataInfo: DataSourceDataParams<T>) => T[] | Promise<T[] | DataSourceRemoteData<T>>);
-type DataSourceGroupRowsList<KeyType> = true | KeyType[][];
-type DataSourcePropGroupRowsStateObject<KeyType> = {
+declare type DataSourceData<T> = T[] | DataSourceRemoteData<T> | Promise<T[] | DataSourceRemoteData<T>> | ((dataInfo: DataSourceDataParams<T>) => T[] | Promise<T[] | DataSourceRemoteData<T>>);
+declare type DataSourceGroupRowsList<KeyType> = true | KeyType[][];
+declare type DataSourcePropGroupRowsStateObject<KeyType> = {
     expandedRows: DataSourceGroupRowsList<KeyType>;
     collapsedRows: DataSourceGroupRowsList<KeyType>;
 };
-type DataSourcePropGroupBy<T> = DataSourceGroupBy<T>[];
-type DataSourcePropPivotBy<T> = DataSourcePivotBy<T>[];
+declare type DataSourcePropGroupBy<T> = DataSourceGroupBy<T>[];
+declare type DataSourcePropPivotBy<T> = DataSourcePivotBy<T>[];
 interface DataSourceMappedState<T> {
     aggregationReducers?: DataSourceProps<T>['aggregationReducers'];
     livePagination: DataSourceProps<T>['livePagination'];
@@ -1535,12 +1535,12 @@ interface DataSourceMappedState<T> {
     collapseGroupRowsOnDataFunctionChange: NonUndefined<DataSourceProps<T>['collapseGroupRowsOnDataFunctionChange']>;
     sortInfo: DataSourceSingleSortInfo<T>[] | null;
 }
-type DataSourceRawReducer<T, RESULT_TYPE> = {
+declare type DataSourceRawReducer<T, RESULT_TYPE> = {
     initialValue?: RESULT_TYPE | (() => RESULT_TYPE);
     reducer: (accumulator: any, value: T) => RESULT_TYPE;
     done?: (accumulatedValue: RESULT_TYPE, array: T[]) => RESULT_TYPE;
 };
-type DataSourceAggregationReducer<T, AggregationResultType> = {
+declare type DataSourceAggregationReducer<T, AggregationResultType> = {
     name?: string;
     field?: keyof T;
     initialValue?: AggregationResultType | (() => any);
@@ -1551,11 +1551,11 @@ type DataSourceAggregationReducer<T, AggregationResultType> = {
         column: InfiniteTablePivotFinalColumnVariant<T>;
     }) => ColumnTypeWithInherit<Partial<InfiniteTablePivotColumn<T>>>);
 };
-type ColumnTypeWithInherit<COL_TYPE> = COL_TYPE & {
+declare type ColumnTypeWithInherit<COL_TYPE> = COL_TYPE & {
     inheritFromColumn?: string | boolean;
 };
-type DataSourceMappings = Record<'totals' | 'values', string>;
-type LazyGroupDataItem<DataType> = {
+declare type DataSourceMappings = Record<'totals' | 'values', string>;
+declare type LazyGroupDataItem<DataType> = {
     data: Partial<DataType>;
     keys: any[];
     aggregations?: Record<string, any>;
@@ -1566,7 +1566,7 @@ type LazyGroupDataItem<DataType> = {
         totals?: Record<string, any>;
     };
 };
-type LazyRowInfoGroup<DataType> = {
+declare type LazyRowInfoGroup<DataType> = {
     /**
      * Those are direct children of the current lazy group row
      */
@@ -1578,7 +1578,7 @@ type LazyRowInfoGroup<DataType> = {
     totalCountUnfiltered: number;
     error?: string;
 };
-type LazyGroupDataDeepMap<DataType, KeyType = string> = DeepMap<KeyType, LazyRowInfoGroup<DataType>>;
+declare type LazyGroupDataDeepMap<DataType, KeyType = string> = DeepMap<KeyType, LazyRowInfoGroup<DataType>>;
 interface DataSourceSetupState<T> {
     indexer: Indexer<T, any>;
     idToIndexMap: Map<any, number>;
@@ -1627,24 +1627,24 @@ interface DataSourceSetupState<T> {
     pivotColumns?: Map<string, InfiniteTableColumn<T>>;
     pivotColumnGroups?: Map<string, InfiniteTableColumnGroup>;
 }
-type DataSourcePropAggregationReducers<T> = Record<string, DataSourceAggregationReducer<T, any>>;
-type DataSourcePropMultiRowSelectionChangeParamType = RowSelectionStateObject;
-type DataSourcePropRowSelection = DataSourcePropRowSelection_MultiRow | DataSourcePropRowSelection_SingleRow;
-type DataSourcePropRowSelection_MultiRow = RowSelectionStateObject;
-type DataSourcePropRowSelection_SingleRow = null | string | number;
-type DataSourcePropCellSelection = any;
-type DataSourcePropSelectionMode = false | 'single-cell' | 'single-row' | 'multi-cell' | 'multi-row';
-type DataSourcePropOnRowSelectionChange_MultiRow = (rowSelection: DataSourcePropRowSelection_MultiRow, selectionMode: 'multi-row') => void;
-type DataSourcePropOnRowSelectionChange_SingleRow = (rowSelection: DataSourcePropRowSelection_SingleRow, selectionMode: 'single-row') => void;
-type DataSourcePropOnRowSelectionChange = DataSourcePropOnRowSelectionChange_SingleRow | DataSourcePropOnRowSelectionChange_MultiRow;
-type DataSourcePropOnCellSelectionChange = (cellSelectionParams: any) => void;
-type DataSourcePropIsRowSelected<T> = (rowInfo: InfiniteTableRowInfo<T>, rowSelectionState: RowSelectionState, selectionMode: 'multi-row') => boolean | null;
-type DataSourcePropSortFn<T> = (sortInfo: MultisortInfoAllowMultipleFields<T>[], array: T[], get?: (item: any) => T) => T[];
-type DataSourceCRUDParam = {
+declare type DataSourcePropAggregationReducers<T> = Record<string, DataSourceAggregationReducer<T, any>>;
+declare type DataSourcePropMultiRowSelectionChangeParamType = RowSelectionStateObject;
+declare type DataSourcePropRowSelection = DataSourcePropRowSelection_MultiRow | DataSourcePropRowSelection_SingleRow;
+declare type DataSourcePropRowSelection_MultiRow = RowSelectionStateObject;
+declare type DataSourcePropRowSelection_SingleRow = null | string | number;
+declare type DataSourcePropCellSelection = any;
+declare type DataSourcePropSelectionMode = false | 'single-cell' | 'single-row' | 'multi-cell' | 'multi-row';
+declare type DataSourcePropOnRowSelectionChange_MultiRow = (rowSelection: DataSourcePropRowSelection_MultiRow, selectionMode: 'multi-row') => void;
+declare type DataSourcePropOnRowSelectionChange_SingleRow = (rowSelection: DataSourcePropRowSelection_SingleRow, selectionMode: 'single-row') => void;
+declare type DataSourcePropOnRowSelectionChange = DataSourcePropOnRowSelectionChange_SingleRow | DataSourcePropOnRowSelectionChange_MultiRow;
+declare type DataSourcePropOnCellSelectionChange = (cellSelectionParams: any) => void;
+declare type DataSourcePropIsRowSelected<T> = (rowInfo: InfiniteTableRowInfo<T>, rowSelectionState: RowSelectionState, selectionMode: 'multi-row') => boolean | null;
+declare type DataSourcePropSortFn<T> = (sortInfo: MultisortInfoAllowMultipleFields<T>[], array: T[], get?: (item: any) => T) => T[];
+declare type DataSourceCRUDParam = {
     flush?: boolean;
     metadata?: any;
 };
-type DataSourceInsertParam = DataSourceCRUDParam & ({
+declare type DataSourceInsertParam = DataSourceCRUDParam & ({
     position: 'before' | 'after';
     primaryKey: any;
 } | {
@@ -1670,9 +1670,9 @@ interface DataSourceApi<T> {
     insertDataArray(data: T[], options: DataSourceInsertParam): Promise<any>;
     setSortInfo(sortInfo: null | DataSourceSingleSortInfo<T>[]): void;
 }
-type DataSourcePropRowInfoReducers<T> = Record<string, DataSourceRowInfoReducer<T>>;
-type DataSourceRowInfoReducer<T> = DataSourceRawReducer<InfiniteTableRowInfo<T>, any>;
-type DataSourceProps<T> = {
+declare type DataSourcePropRowInfoReducers<T> = Record<string, DataSourceRowInfoReducer<T>>;
+declare type DataSourceRowInfoReducer<T> = DataSourceRawReducer<InfiniteTableRowInfo<T>, any>;
+declare type DataSourceProps<T> = {
     children: React$1.ReactNode | ((contextData: DataSourceState<T>) => React$1.ReactNode);
     primaryKey: keyof T | ((data: T) => string);
     /**
@@ -1750,17 +1750,17 @@ type DataSourceProps<T> = {
 } | {
     selectionMode?: false;
 });
-type DataSourcePropSortTypes = Record<string, (first: any, second: any) => number>;
-type DataSourcePropFilterTypes<T> = Record<string, DataSourceFilterType<T>>;
-type DataSourceFilterFunctionParam<T> = {
+declare type DataSourcePropSortTypes = Record<string, (first: any, second: any) => number>;
+declare type DataSourcePropFilterTypes<T> = Record<string, DataSourceFilterType<T>>;
+declare type DataSourceFilterFunctionParam<T> = {
     data: T;
     index: number;
     dataArray: T[];
     primaryKey: any;
 };
-type DataSourcePropFilterFunction<T> = (filterParam: DataSourceFilterFunctionParam<T>) => boolean;
-type DataSourcePropFilterValue<T> = DataSourceFilterValueItem<T>[];
-type DataSourceFilterValueItem<T> = DiscriminatedUnion<{
+declare type DataSourcePropFilterFunction<T> = (filterParam: DataSourceFilterFunctionParam<T>) => boolean;
+declare type DataSourcePropFilterValue<T> = DataSourceFilterValueItem<T>[];
+declare type DataSourceFilterValueItem<T> = DiscriminatedUnion<{
     field: keyof T;
 }, {
     id: string;
@@ -1773,10 +1773,10 @@ type DataSourceFilterValueItem<T> = DiscriminatedUnion<{
     };
     disabled?: boolean;
 };
-type DataSourceFilterValueItemValueGetter<T> = (param: DataSourceFilterFunctionParam<T> & {
+declare type DataSourceFilterValueItemValueGetter<T> = (param: DataSourceFilterFunctionParam<T> & {
     field?: keyof T;
 }) => any;
-type DataSourceFilterType<T> = {
+declare type DataSourceFilterType<T> = {
     emptyValues: any[];
     label?: string;
     defaultOperator: string;
@@ -1787,7 +1787,7 @@ type DataSourceFilterType<T> = {
     };
     operators: DataSourceFilterOperator<T>[];
 };
-type DataSourceFilterOperator<T> = {
+declare type DataSourceFilterOperator<T> = {
     name: string;
     label?: string;
     components?: {
@@ -1796,24 +1796,24 @@ type DataSourceFilterOperator<T> = {
     };
     fn: DataSourceFilterOperatorFunction<T>;
 };
-type DataSourceFilterOperatorFunction<T> = (filterOperatorFunctionParam: DataSourceFilterOperatorFunctionParam<T>) => boolean;
-type DataSourceFilterOperatorFunctionParam<T> = {
+declare type DataSourceFilterOperatorFunction<T> = (filterOperatorFunctionParam: DataSourceFilterOperatorFunctionParam<T>) => boolean;
+declare type DataSourceFilterOperatorFunctionParam<T> = {
     currentValue: any;
     filterValue: any;
     emptyValues: any[];
     field?: keyof T;
 } & DataSourceFilterFunctionParam<T>;
-type DataSourcePropLivePaginationCursor<T> = DataSourceLivePaginationCursorValue | DataSourceLivePaginationCursorFn<T>;
-type DataSourceLivePaginationCursorFn<T> = (params: DataSourceLivePaginationCursorParams<T>) => DataSourceLivePaginationCursorValue;
-type DataSourceLivePaginationCursorParams<T> = {
+declare type DataSourcePropLivePaginationCursor<T> = DataSourceLivePaginationCursorValue | DataSourceLivePaginationCursorFn<T>;
+declare type DataSourceLivePaginationCursorFn<T> = (params: DataSourceLivePaginationCursorParams<T>) => DataSourceLivePaginationCursorValue;
+declare type DataSourceLivePaginationCursorParams<T> = {
     array: T[];
     lastItem: T | Partial<T> | null;
     length: number;
 };
-type DataSourceLivePaginationCursorValue = string | number | null;
+declare type DataSourceLivePaginationCursorValue = string | number | null;
 interface DataSourceState<T> extends DataSourceSetupState<T>, DataSourceDerivedState<T>, DataSourceMappedState<T> {
 }
-type DataSourceDerivedState<T> = {
+declare type DataSourceDerivedState<T> = {
     toPrimaryKey: (data: T) => any;
     operatorsByFilterType: Record<string, Record<string, DataSourceFilterOperator<T>>>;
     sortMode: NonUndefined<DataSourceProps<T>['sortMode']>;
@@ -1827,7 +1827,7 @@ type DataSourceDerivedState<T> = {
     rowSelection: RowSelectionState | null | number | string;
     selectionMode: NonUndefined<DataSourceProps<T>['selectionMode']>;
 };
-type DataSourceComponentActions<T> = ComponentStateActions<DataSourceState<T>>;
+declare type DataSourceComponentActions<T> = ComponentStateActions<DataSourceState<T>>;
 interface DataSourceContextValue<T> {
     api: DataSourceApi<T>;
     getState: () => DataSourceState<T>;
@@ -1846,13 +1846,13 @@ declare const defaultFilterTypes: Record<string, DataSourceFilterType<any>>;
 
 declare function useDataSource<T>(): DataSourceState<T>;
 
-declare function DataSource<T>(props: DataSourceProps<T>): JSX.Element;
+declare function DataSource<T>(props: DataSourceProps<T>): React$1.JSX.Element;
 declare function useRowInfoReducers(): Record<string, any> | undefined;
 
-type AggregationReducer<T, AggregationResultType = any> = DataSourceAggregationReducer<T, AggregationResultType> & {
+declare type AggregationReducer<T, AggregationResultType = any> = DataSourceAggregationReducer<T, AggregationResultType> & {
     id: string;
 };
-type AggregationReducerResult<AggregationResultType extends any = any> = AggregationResultType;
+declare type AggregationReducerResult<AggregationResultType extends any = any> = AggregationResultType;
 /**
  * InfiniteTableRowInfo can have different object shape depending on the presence or absence of grouping.
  *
@@ -1861,8 +1861,8 @@ type AggregationReducerResult<AggregationResultType extends any = any> = Aggrega
  * you can use `isGroupRow: boolean` to discriminate between group rows vs normal rows.
  *
  */
-type InfiniteTableRowInfo<T> = InfiniteTable_HasGrouping_RowInfoNormal<T> | InfiniteTable_HasGrouping_RowInfoGroup<T> | InfiniteTable_NoGrouping_RowInfoNormal<T>;
-type InfiniteTableRowInfoDataDiscriminator_RowInfoNormal<T> = {
+declare type InfiniteTableRowInfo<T> = InfiniteTable_HasGrouping_RowInfoNormal<T> | InfiniteTable_HasGrouping_RowInfoGroup<T> | InfiniteTable_NoGrouping_RowInfoNormal<T>;
+declare type InfiniteTableRowInfoDataDiscriminator_RowInfoNormal<T> = {
     data: T;
     isGroupRow: false;
     rowActive: boolean;
@@ -1872,7 +1872,7 @@ type InfiniteTableRowInfoDataDiscriminator_RowInfoNormal<T> = {
     rawValue: any;
     rowSelected: boolean | null;
 };
-type InfiniteTableRowInfoDataDiscriminator_RowInfoGroup<T> = {
+declare type InfiniteTableRowInfoDataDiscriminator_RowInfoGroup<T> = {
     rowActive: boolean;
     data: Partial<T> | null;
     rowInfo: InfiniteTable_HasGrouping_RowInfoGroup<T>;
@@ -1882,24 +1882,24 @@ type InfiniteTableRowInfoDataDiscriminator_RowInfoGroup<T> = {
     rawValue: any;
     rowSelected: boolean | null;
 };
-type InfiniteTableRowInfoDataDiscriminator<T> = InfiniteTableRowInfoDataDiscriminator_RowInfoNormal<T> | InfiniteTableRowInfoDataDiscriminator_RowInfoGroup<T>;
+declare type InfiniteTableRowInfoDataDiscriminator<T> = InfiniteTableRowInfoDataDiscriminator_RowInfoNormal<T> | InfiniteTableRowInfoDataDiscriminator_RowInfoGroup<T>;
 /**
  * This is the base row info for all scenarios - things every
  * rowInfo is guaranteed to have (be it group or normal row, or dataSource with or without grouping)
  *
  */
-type InfiniteTable_RowInfoBase<_T> = {
+declare type InfiniteTable_RowInfoBase<_T> = {
     id: any;
     value?: any;
     indexInAll: number;
     rowSelected: boolean | null;
 };
-type InfiniteTable_HasGrouping_RowInfoNormal<T> = {
+declare type InfiniteTable_HasGrouping_RowInfoNormal<T> = {
     dataSourceHasGrouping: true;
     data: T;
     isGroupRow: false;
 } & InfiniteTable_HasGrouping_RowInfoBase<T> & InfiniteTable_RowInfoBase<T>;
-type InfiniteTable_HasGrouping_RowInfoGroup<T> = {
+declare type InfiniteTable_HasGrouping_RowInfoGroup<T> = {
     dataSourceHasGrouping: true;
     data: Partial<T> | null;
     reducerData?: Partial<Record<keyof T, any>>;
@@ -1978,13 +1978,13 @@ type InfiniteTable_HasGrouping_RowInfoGroup<T> = {
      */
     childrenLoading: boolean;
 } & InfiniteTable_HasGrouping_RowInfoBase<T> & InfiniteTable_RowInfoBase<T>;
-type InfiniteTable_NoGrouping_RowInfoNormal<T> = {
+declare type InfiniteTable_NoGrouping_RowInfoNormal<T> = {
     dataSourceHasGrouping: false;
     data: T;
     isGroupRow: false;
     selfLoaded: boolean;
 } & InfiniteTable_RowInfoBase<T>;
-type InfiniteTable_HasGrouping_RowInfoBase<T> = {
+declare type InfiniteTable_HasGrouping_RowInfoBase<T> = {
     indexInGroup: number;
     /**
      * Available on all rowInfo objects when the datasource is grouped, otherwise, it will be undefined.
@@ -2072,14 +2072,14 @@ type InfiniteTable_HasGrouping_RowInfoBase<T> = {
      */
     selfLoaded: boolean;
 };
-type GroupKeyType<T extends any = any> = T;
-type PivotReducerResults<T = any> = Record<string, AggregationReducerResult<T>>;
-type PivotGroupValueType<DataType, KeyType> = {
+declare type GroupKeyType<T extends any = any> = T;
+declare type PivotReducerResults<T = any> = Record<string, AggregationReducerResult<T>>;
+declare type PivotGroupValueType<DataType, KeyType> = {
     reducerResults: PivotReducerResults<KeyType>;
     items: DataType[];
 };
-type PivotValuesDeepMap<DataType, KeyType> = DeepMap<GroupKeyType<KeyType>, PivotGroupValueType<DataType, KeyType>>;
-type DeepMapGroupValueType<DataType, KeyType> = {
+declare type PivotValuesDeepMap<DataType, KeyType> = DeepMap<GroupKeyType<KeyType>, PivotGroupValueType<DataType, KeyType>>;
+declare type DeepMapGroupValueType<DataType, KeyType> = {
     /**
      * These are leaf items. This array may be empty when there is batched lazy loading
      */
@@ -2093,7 +2093,7 @@ type DeepMapGroupValueType<DataType, KeyType> = {
     reducerResults: Record<string, AggregationReducerResult>;
     pivotDeepMap?: DeepMap<GroupKeyType<KeyType>, PivotGroupValueType<DataType, KeyType>>;
 };
-type PivotBy<DataType, KeyType> = Omit<GroupBy<DataType, KeyType>, 'column'> & {
+declare type PivotBy<DataType, KeyType> = Omit<GroupBy<DataType, KeyType>, 'column'> & {
     column?: ColumnTypeWithInherit<Partial<InfiniteTableColumn<DataType>>> | (({ column, }: {
         column: InfiniteTablePivotFinalColumnVariant<DataType, KeyType>;
     }) => Partial<InfiniteTablePivotColumn<DataType>>);
@@ -2101,13 +2101,13 @@ type PivotBy<DataType, KeyType> = Omit<GroupBy<DataType, KeyType>, 'column'> & {
         columnGroup: InfiniteTablePivotFinalColumnGroup<DataType, KeyType>;
     }) => ColumnTypeWithInherit<Partial<InfiniteTablePivotFinalColumnGroup<DataType>>>);
 };
-type GroupParams<DataType, KeyType> = {
+declare type GroupParams<DataType, KeyType> = {
     groupBy: GroupBy<DataType, KeyType>[];
     defaultToKey?: (value: any, item: DataType) => GroupKeyType<KeyType>;
     pivot?: PivotBy<DataType, KeyType>[];
     reducers?: Record<string, DataSourceAggregationReducer<DataType, any>>;
 };
-type DataGroupResult<DataType, KeyType extends any> = {
+declare type DataGroupResult<DataType, KeyType extends any> = {
     deepMap: DeepMap<GroupKeyType<KeyType>, DeepMapGroupValueType<DataType, KeyType>>;
     groupParams: GroupParams<DataType, KeyType>;
     initialData: DataType[];
@@ -2118,62 +2118,62 @@ type DataGroupResult<DataType, KeyType extends any> = {
 declare function group<DataType, KeyType = any>(groupParams: GroupParams<DataType, KeyType>, data: DataType[]): DataGroupResult<DataType, KeyType>;
 declare function flatten<DataType, KeyType extends any>(groupResult: DataGroupResult<DataType, KeyType>): DataType[];
 
-type InfiniteCheckBoxPropChecked = true | false | null;
-type InfiniteCheckBoxProps = {
+declare type InfiniteCheckBoxPropChecked = true | false | null;
+declare type InfiniteCheckBoxProps = {
     disabled?: boolean;
     checked?: InfiniteCheckBoxPropChecked;
     defaultChecked?: InfiniteCheckBoxPropChecked;
     onChange?: (checked: InfiniteCheckBoxPropChecked) => void;
     domProps?: React$1.HTMLProps<HTMLElement>;
 };
-declare function InfiniteCheckBox(props: InfiniteCheckBoxProps): JSX.Element;
+declare function InfiniteCheckBox(props: InfiniteCheckBoxProps): React$1.JSX.Element;
 
-type CoordsWithSize = {
+declare type CoordsWithSize = {
     width: number;
     height: number;
     left: number;
     top: number;
 };
-type CoordsNoSize = {
+declare type CoordsNoSize = {
     right: number;
     bottom: number;
     left: number;
     top: number;
 };
-type RectangleCoords = CoordsWithSize | CoordsNoSize;
+declare type RectangleCoords = CoordsWithSize | CoordsNoSize;
 
-type Alignable = RectangleCoords | HTMLElement | DOMRect;
-type AlignPositionEnum = 'TopLeft' | 'TopCenter' | 'TopRight' | 'CenterRight' | 'BottomRight' | 'BottomCenter' | 'BottomLeft' | 'CenterLeft' | 'Center';
-type AlignPositionItem = [AlignPositionEnum, AlignPositionEnum];
-type AlignPositionOptions = {
+declare type Alignable = RectangleCoords | HTMLElement | DOMRect;
+declare type AlignPositionEnum = 'TopLeft' | 'TopCenter' | 'TopRight' | 'CenterRight' | 'BottomRight' | 'BottomCenter' | 'BottomLeft' | 'CenterLeft' | 'Center';
+declare type AlignPositionItem = [AlignPositionEnum, AlignPositionEnum];
+declare type AlignPositionOptions = {
     alignPosition: AlignPositionItem[];
     constrainTo?: Alignable;
     alignAnchor: Alignable;
     alignTarget: Alignable;
 };
 
-type OverlayParams = {
+declare type OverlayParams = {
     portalContainer?: ElementContainerGetter | null | false;
     constrainTo?: OverlayShowParams['constrainTo'];
 };
-type ElementContainerGetter = (() => HTMLElement | string | Promise<HTMLElement | string>) | string | HTMLElement | Promise<HTMLElement | string>;
-type AdvancedAlignable = Alignable | ElementContainerGetter;
+declare type ElementContainerGetter = (() => HTMLElement | string | Promise<HTMLElement | string>) | string | HTMLElement | Promise<HTMLElement | string>;
+declare type AdvancedAlignable = Alignable | ElementContainerGetter;
 /**
  * If portal container is given, it will create a React portal from that element
  * otherwise it will simply render another node as portal
  *
  * @param portalContainer
  */
-declare function useOverlayPortal(content: ReactNode, portalContainer?: ElementContainerGetter | null | false): string | number | boolean | JSX.Element | React$1.ReactFragment | null | undefined;
-type OverlayShowParams = {
+declare function useOverlayPortal(content: ReactNode, portalContainer?: ElementContainerGetter | null | false): string | number | boolean | React$1.JSX.Element | Iterable<React$1.ReactNode> | null | undefined;
+declare type OverlayShowParams = {
     id?: string | number;
     constrainTo?: AdvancedAlignable | boolean;
     alignPosition: AlignPositionOptions['alignPosition'];
     alignTo: AdvancedAlignable | PointCoords;
 };
-type ShowOverlayFn = (content: ReactNode | (() => ReactNode), params: OverlayShowParams) => VoidFunction | undefined;
+declare type ShowOverlayFn = (content: ReactNode | (() => ReactNode), params: OverlayShowParams) => VoidFunction | undefined;
 declare function useOverlay(params: OverlayParams): {
-    portal: string | number | boolean | JSX.Element | React$1.ReactFragment | null | undefined;
+    portal: string | number | boolean | React$1.JSX.Element | Iterable<React$1.ReactNode> | null | undefined;
     hideOverlay: (id: string) => void;
     clearAll: () => void;
     rerenderOverlays: () => void;
@@ -2195,9 +2195,9 @@ we don't want to allow the above `y` as a valid declaration
 it breaks some types in the Menu component as well
 
  */
-type RemoveObject<T> = T extends null | undefined ? T : T extends unknown ? keyof T extends never ? never : T : never;
+declare type RemoveObject<T> = T extends null | undefined ? T : T extends unknown ? keyof T extends never ? never : T : never;
 
-type MenuSetupState = {
+declare type MenuSetupState = {
     domRef: MutableRefObject<HTMLDivElement | null>;
     keyboardActiveItemKey: string | null;
     activeItemKey: string | null;
@@ -2205,13 +2205,13 @@ type MenuSetupState = {
     focused: boolean;
     destroyed: boolean;
 };
-type MenuDerivedState = {
+declare type MenuDerivedState = {
     runtimeItems: MenuRuntimeItem[];
     runtimeSelectableItems: MenuRuntimeItemSelectable[];
     columns: MenuColumn[];
     menuId: string;
 };
-type MenuMappedState = {
+declare type MenuMappedState = {
     parentMenuId: MenuProps['parentMenuId'];
     parentMenuItemKey: MenuProps['parentMenuItemKey'];
     constrainTo: MenuProps['constrainTo'];
@@ -2224,14 +2224,14 @@ type MenuMappedState = {
 };
 interface MenuState extends MenuMappedState, MenuDerivedState, MenuSetupState {
 }
-type MenuApi = {
+declare type MenuApi = {
     focus: VoidFunction;
     getMenuId: () => string;
     getParentMenuId: () => string | undefined;
 };
 
-type MenuRenderable = string | number | RemoveObject<Renderable>;
-type MenuRuntimeItemSelectable = {
+declare type MenuRenderable = string | number | RemoveObject<Renderable>;
+declare type MenuRuntimeItemSelectable = {
     type: 'item';
     key: string;
     parentMenuId: string;
@@ -2245,18 +2245,18 @@ type MenuRuntimeItemSelectable = {
     menu: MenuProps | (() => MenuProps) | null;
     originalMenuItem: MenuItemObject;
 };
-type MenuRuntimeItem = MenuRuntimeItemSelectable | {
+declare type MenuRuntimeItem = MenuRuntimeItemSelectable | {
     type: 'decoration';
     value: MenuDecoration;
     style: CSSProperties;
     span: number;
 };
-type MenuChildrenFnParam = {
+declare type MenuChildrenFnParam = {
     item: MenuRuntimeItem;
     column: MenuColumn;
     columns: MenuColumn[];
 };
-type MenuProps = {
+declare type MenuProps = {
     id?: string;
     portalContainer?: ElementContainerGetter | false | null;
     items?: MenuItemDefinition[];
@@ -2274,12 +2274,12 @@ type MenuProps = {
     parentMenuItemKey?: string;
     autoFocus?: boolean;
 };
-type MenuSeparator = '-';
-type MenuItemDefinition = MenuItemObject | MenuDecoration | MenuSeparator;
-type MenuItemSubMenu = Omit<MenuProps, 'children' | 'items'> & {
+declare type MenuSeparator = '-';
+declare type MenuItemDefinition = MenuItemObject | MenuDecoration | MenuSeparator;
+declare type MenuItemSubMenu = Omit<MenuProps, 'children' | 'items'> & {
     items: (MenuItemObject | MenuSeparator)[];
 };
-type MenuItemObject = {
+declare type MenuItemObject = {
     key: string;
     label: NonUndefined<MenuRenderable>;
     span?: number;
@@ -2292,8 +2292,8 @@ type MenuItemObject = {
     onAction?: (key: string, item: MenuItemObject) => void;
     [k: string]: any;
 };
-type MenuDecoration = MenuRenderable;
-type MenuColumn = {
+declare type MenuDecoration = MenuRenderable;
+declare type MenuColumn = {
     flex?: number;
     width?: string | number;
     style?: CSSProperties;
@@ -2301,34 +2301,34 @@ type MenuColumn = {
     field?: string;
     render?: (param: MenuColumnRenderParam) => MenuRenderable;
 };
-type MenuColumnRenderParam = {
+declare type MenuColumnRenderParam = {
     item: MenuItemObject;
     column: MenuColumn;
     value: MenuRenderable;
     domProps: HTMLProps<HTMLDivElement>;
 };
 
-type LoadMaskProps = {
+declare type LoadMaskProps = {
     visible: boolean;
     children: Renderable;
 };
-type InfiniteTablePropColumnOrderNormalized = string[];
-type InfiniteTablePropColumnOrder = InfiniteTablePropColumnOrderNormalized | true;
-type InfiniteTablePropColumnVisibility = Record<string, false>;
-type InfiniteTableColumnPinnedValues = false | 'start' | 'end';
-type InfiniteTablePropColumnPinning = Record<string, true | 'start' | 'end'>;
-type InfiniteTableRowStyleFnParams<T> = {
+declare type InfiniteTablePropColumnOrderNormalized = string[];
+declare type InfiniteTablePropColumnOrder = InfiniteTablePropColumnOrderNormalized | true;
+declare type InfiniteTablePropColumnVisibility = Record<string, false>;
+declare type InfiniteTableColumnPinnedValues = false | 'start' | 'end';
+declare type InfiniteTablePropColumnPinning = Record<string, true | 'start' | 'end'>;
+declare type InfiniteTableRowStyleFnParams<T> = {
     rowIndex: number;
 } & InfiniteTableRowInfoDataDiscriminator<T>;
-type InfiniteTableRowStyleFn<T> = (params: InfiniteTableRowStyleFnParams<T>) => undefined | React$1.CSSProperties;
-type InfiniteTableRowClassNameFn<T> = (params: InfiniteTableRowStyleFnParams<T>) => string | undefined;
-type InfiniteTablePropRowStyle<T> = React$1.CSSProperties | InfiniteTableRowStyleFn<T>;
-type InfiniteTablePropRowClassName<T> = string | InfiniteTableRowClassNameFn<T>;
-type InfiniteTableColumnAggregator<T, AggregationResultType> = Omit<AggregationReducer<T, AggregationResultType>, 'getter' | 'id'> & {
+declare type InfiniteTableRowStyleFn<T> = (params: InfiniteTableRowStyleFnParams<T>) => undefined | React$1.CSSProperties;
+declare type InfiniteTableRowClassNameFn<T> = (params: InfiniteTableRowStyleFnParams<T>) => string | undefined;
+declare type InfiniteTablePropRowStyle<T> = React$1.CSSProperties | InfiniteTableRowStyleFn<T>;
+declare type InfiniteTablePropRowClassName<T> = string | InfiniteTableRowClassNameFn<T>;
+declare type InfiniteTableColumnAggregator<T, AggregationResultType> = Omit<AggregationReducer<T, AggregationResultType>, 'getter' | 'id'> & {
     getter?: AggregationReducer<T, AggregationResultType>['getter'];
     field?: keyof T;
 };
-type InfiniteTableColumnType<T> = {
+declare type InfiniteTableColumnType<T> = {
     minWidth?: number;
     maxWidth?: number;
     filterType?: string;
@@ -2369,20 +2369,20 @@ type InfiniteTableColumnType<T> = {
     headerStyle?: InfiniteTableColumn<T>['headerStyle'];
     headerClassName?: InfiniteTableColumn<T>['headerClassName'];
 };
-type InfiniteTablePropColumnTypes<T> = Record<'default' | string, InfiniteTableColumnType<T>>;
-type InfiniteTableColumnSizingOptions = {
+declare type InfiniteTablePropColumnTypes<T> = Record<'default' | string, InfiniteTableColumnType<T>>;
+declare type InfiniteTableColumnSizingOptions = {
     flex?: number;
     width?: number;
     minWidth?: number;
     maxWidth?: number;
 };
-type InfiniteTablePropColumnSizing = Record<string, InfiniteTableColumnSizingOptions>;
-type ColumnCellValues = {
+declare type InfiniteTablePropColumnSizing = Record<string, InfiniteTableColumnSizingOptions>;
+declare type ColumnCellValues = {
     value: any;
     rawValue: any;
     formattedValue: any;
 };
-type InfiniteTableColumnApi<_T> = {
+declare type InfiniteTableColumnApi<_T> = {
     showContextMenu: (target: EventTarget | HTMLElement) => void;
     toggleContextMenu: (target: EventTarget | HTMLElement) => void;
     hideContextMenu: () => void;
@@ -2401,7 +2401,7 @@ type InfiniteTableColumnApi<_T> = {
     getCellValuesByPrimaryKey: (id: any) => null | ColumnCellValues;
     getCellValueByPrimaryKey: (id: any) => any | null;
 };
-type InfiniteTableApiStopEditParams = {
+declare type InfiniteTableApiStopEditParams = {
     cancel: true;
     reject?: never;
     value?: never;
@@ -2414,22 +2414,22 @@ type InfiniteTableApiStopEditParams = {
     cancel?: never;
     reject?: never;
 };
-type InfiniteTableApiIsCellEditableParams = InfiniteTableApiCellLocator;
-type InfiniteTableApiCellLocator = {
+declare type InfiniteTableApiIsCellEditableParams = InfiniteTableApiCellLocator;
+declare type InfiniteTableApiCellLocator = {
     columnId: string;
 } & XOR<{
     rowIndex: number;
 }, {
     primaryKey: any;
 }>;
-type InfiniteTableApiStopEditPromiseResolveType = {
+declare type InfiniteTableApiStopEditPromiseResolveType = {
     cancel: true;
     value: null;
 } | {
     reject: Error;
     value: any;
 } | boolean;
-type MultiSortBehaviorOptions = {
+declare type MultiSortBehaviorOptions = {
     multiSortBehavior?: InfiniteTablePropMultiSortBehavior;
 };
 interface InfiniteTableApi<T> {
@@ -2501,22 +2501,22 @@ interface InfiniteTableApi<T> {
     getDataSourceState: () => DataSourceState<T>;
     focus: () => void;
 }
-type InfiniteTablePropVirtualizeColumns<T> = boolean | ((columns: InfiniteTableComputedColumn<T>[]) => boolean);
-type InfiniteTableColumnsMap<T, ColumnType = InfiniteTableColumn<T>> = Map<string, ColumnType>;
-type InfiniteTablePropColumns<T, ColumnType = InfiniteTableColumn<T>> = Record<string, ColumnType> | InfiniteTableColumnsMap<T, ColumnType>;
-type InfiniteTablePropColumnGroupsMap = Map<string, InfiniteTableColumnGroup>;
-type InfiniteTablePropColumnGroupsRecord = Record<string, InfiniteTableColumnGroup>;
-type InfiniteTablePropColumnGroups = InfiniteTablePropColumnGroupsRecord | InfiniteTablePropColumnGroupsMap;
-type InfiniteTablePropCollapsedColumnGroups = Map<string[], string>;
-type InfiniteTableColumnGroupHeaderRenderParams = {
+declare type InfiniteTablePropVirtualizeColumns<T> = boolean | ((columns: InfiniteTableComputedColumn<T>[]) => boolean);
+declare type InfiniteTableColumnsMap<T, ColumnType = InfiniteTableColumn<T>> = Map<string, ColumnType>;
+declare type InfiniteTablePropColumns<T, ColumnType = InfiniteTableColumn<T>> = Record<string, ColumnType> | InfiniteTableColumnsMap<T, ColumnType>;
+declare type InfiniteTablePropColumnGroupsMap = Map<string, InfiniteTableColumnGroup>;
+declare type InfiniteTablePropColumnGroupsRecord = Record<string, InfiniteTableColumnGroup>;
+declare type InfiniteTablePropColumnGroups = InfiniteTablePropColumnGroupsRecord | InfiniteTablePropColumnGroupsMap;
+declare type InfiniteTablePropCollapsedColumnGroups = Map<string[], string>;
+declare type InfiniteTableColumnGroupHeaderRenderParams = {
     columnGroup: InfiniteTableComputedColumnGroup;
 };
-type InfiniteTableColumnGroupHeaderRenderFunction = (params: InfiniteTableColumnGroupHeaderRenderParams) => Renderable;
-type InfiniteTableColumnGroup = {
+declare type InfiniteTableColumnGroupHeaderRenderFunction = (params: InfiniteTableColumnGroupHeaderRenderParams) => Renderable;
+declare type InfiniteTableColumnGroup = {
     columnGroup?: string;
     header?: Renderable | InfiniteTableColumnGroupHeaderRenderFunction;
 };
-type InfiniteTableComputedColumnGroup = InfiniteTableColumnGroup & {
+declare type InfiniteTableComputedColumnGroup = InfiniteTableColumnGroup & {
     id: string;
     groupOffset: number;
     computedWidth: number;
@@ -2524,7 +2524,7 @@ type InfiniteTableComputedColumnGroup = InfiniteTableColumnGroup & {
     columns: string[];
     depth: number;
 };
-type InfiniteTableGroupColumnGetterOptions<T> = {
+declare type InfiniteTableGroupColumnGetterOptions<T> = {
     groupIndexForColumn?: number;
     groupByForColumn?: DataSourceGroupBy<T>;
     selectionMode: DataSourcePropSelectionMode;
@@ -2534,23 +2534,23 @@ type InfiniteTableGroupColumnGetterOptions<T> = {
     pivotBy?: DataSourcePivotBy<T>[];
     sortable?: boolean;
 };
-type InfiniteTablePivotColumnGetterOptions<T, COL_TYPE = InfiniteTableColumn<T>> = {
+declare type InfiniteTablePivotColumnGetterOptions<T, COL_TYPE = InfiniteTableColumn<T>> = {
     column: COL_TYPE;
     groupBy: DataSourcePropGroupBy<T>;
     pivotBy: DataSourcePropPivotBy<T>;
 };
-type InfiniteTablePropGroupRenderStrategy = 'single-column' | 'multi-column' | 'inline';
-type InfiniteTableGroupColumnBase<T> = Partial<InfiniteTableColumn<T>> & {
+declare type InfiniteTablePropGroupRenderStrategy = 'single-column' | 'multi-column' | 'inline';
+declare type InfiniteTableGroupColumnBase<T> = Partial<InfiniteTableColumn<T>> & {
     renderGroupIcon?: InfiniteTableColumnRenderFunctionForGroupRows<T>;
     id?: string;
 };
-type InfiniteTablePivotColumnBase<T> = InfiniteTableColumn<T> & {
+declare type InfiniteTablePivotColumnBase<T> = InfiniteTableColumn<T> & {
     renderValue?: InfiniteTableColumnRenderFunction<T, InfiniteTableComputedPivotFinalColumn<T>>;
 };
-type InfiniteTablePropGroupColumn<T> = InfiniteTableGroupColumnBase<T> | InfiniteTableGroupColumnFunction<T>;
-type InfiniteTableGroupColumnFunction<T> = (options: InfiniteTableGroupColumnGetterOptions<T>, toggleGroupRow: (groupKeys: any[]) => void) => Partial<InfiniteTableGroupColumnBase<T>>;
-type InfiniteTablePropPivotColumn<T, COL_TYPE = InfiniteTableColumn<T>> = Partial<InfiniteTablePivotColumnBase<T>> | ((options: InfiniteTablePivotColumnGetterOptions<T, COL_TYPE>) => InfiniteTablePivotColumnBase<T>);
-type InfiniteTablePropComponents = {
+declare type InfiniteTablePropGroupColumn<T> = InfiniteTableGroupColumnBase<T> | InfiniteTableGroupColumnFunction<T>;
+declare type InfiniteTableGroupColumnFunction<T> = (options: InfiniteTableGroupColumnGetterOptions<T>, toggleGroupRow: (groupKeys: any[]) => void) => Partial<InfiniteTableGroupColumnBase<T>>;
+declare type InfiniteTablePropPivotColumn<T, COL_TYPE = InfiniteTableColumn<T>> = Partial<InfiniteTablePivotColumnBase<T>> | ((options: InfiniteTablePivotColumnGetterOptions<T, COL_TYPE>) => InfiniteTablePivotColumnBase<T>);
+declare type InfiniteTablePropComponents = {
     LoadMask?: (props: LoadMaskProps & {
         children?: React$1.ReactNode | undefined;
     }) => JSX.Element | null;
@@ -2560,31 +2560,31 @@ type InfiniteTablePropComponents = {
     }) => JSX.Element | null;
     MenuIcon?: (props: MenuIconProps) => JSX.Element | null;
 };
-type ScrollStopInfo = {
+declare type ScrollStopInfo = {
     scrollTop: number;
     firstVisibleRowIndex: number;
     lastVisibleRowIndex: number;
 };
-type InfiniteTableRowInfoDataDiscriminatorWithColumn<T> = {
+declare type InfiniteTableRowInfoDataDiscriminatorWithColumn<T> = {
     column: InfiniteTableComputedColumn<T>;
     columnApi: InfiniteTableColumnApi<T>;
 } & InfiniteTableRowInfoDataDiscriminator<T>;
-type InfiniteTableRowInfoDataDiscriminatorWithColumnAndApis<T> = {
+declare type InfiniteTableRowInfoDataDiscriminatorWithColumnAndApis<T> = {
     api: InfiniteTableApi<T>;
     dataSourceApi: DataSourceApi<T>;
 } & InfiniteTableRowInfoDataDiscriminatorWithColumn<T>;
-type InfiniteTablePropEditable<T> = InfiniteTableColumnEditableFn<T> | undefined;
-type InfiniteTablePropSortable<T> = InfiniteTableColumnSortable<T> | undefined;
-type InfiniteTablePropOnEditAcceptedParams<T> = InfiniteTableRowInfoDataDiscriminatorWithColumnAndApis<T> & {
+declare type InfiniteTablePropEditable<T> = InfiniteTableColumnEditableFn<T> | undefined;
+declare type InfiniteTablePropSortable<T> = InfiniteTableColumnSortable<T> | undefined;
+declare type InfiniteTablePropOnEditAcceptedParams<T> = InfiniteTableRowInfoDataDiscriminatorWithColumnAndApis<T> & {
     initialValue: any;
 };
-type InfiniteTablePropOnEditCancelledParams<T> = InfiniteTablePropOnEditAcceptedParams<T>;
-type InfiniteTablePropOnEditRejectedParams<T> = InfiniteTableRowInfoDataDiscriminatorWithColumnAndApis<T> & {
+declare type InfiniteTablePropOnEditCancelledParams<T> = InfiniteTablePropOnEditAcceptedParams<T>;
+declare type InfiniteTablePropOnEditRejectedParams<T> = InfiniteTableRowInfoDataDiscriminatorWithColumnAndApis<T> & {
     initialValue: any;
     error: Error;
 };
-type InfiniteTablePropOnEditPersistParams<T> = InfiniteTablePropOnEditAcceptedParams<T>;
-type InfiniteTablePropMultiSortBehavior = 'append' | 'replace';
+declare type InfiniteTablePropOnEditPersistParams<T> = InfiniteTablePropOnEditAcceptedParams<T>;
+declare type InfiniteTablePropMultiSortBehavior = 'append' | 'replace';
 interface InfiniteTableProps<T> {
     columns: InfiniteTablePropColumns<T>;
     pivotColumns?: InfiniteTableColumnsMap<T, InfiniteTablePivotColumn<T>>;
@@ -2732,22 +2732,22 @@ interface InfiniteTableProps<T> {
     getColumnMenuItems?: InfiniteTablePropGetColumnMenuItems<T>;
     getFilterOperatorMenuItems?: InfiniteTablePropGetFilterOperatorMenuItems<T>;
 }
-type InfiniteTablePropGetColumnMenuItems<T> = (defaultItems: Exclude<MenuProps['items'], undefined>, params: {
+declare type InfiniteTablePropGetColumnMenuItems<T> = (defaultItems: Exclude<MenuProps['items'], undefined>, params: {
     column: InfiniteTableComputedColumn<T>;
     columnApi: InfiniteTableColumnApi<T>;
     getComputed: () => InfiniteTableComputedValues<T>;
 } & InfiniteTablePublicContext<T>) => MenuProps['items'];
-type GetContextMenuItemsReturnType = MenuProps['items'] | null | {
+declare type GetContextMenuItemsReturnType = MenuProps['items'] | null | {
     items: MenuProps['items'];
     columns: MenuColumn[];
 };
-type InfiniteTablePropGetCellContextMenuItems<T> = (info: InfiniteTableRowInfoDataDiscriminatorWithColumn<T> & {
+declare type InfiniteTablePropGetCellContextMenuItems<T> = (info: InfiniteTableRowInfoDataDiscriminatorWithColumn<T> & {
     event: React$1.MouseEvent;
 }, params: InfiniteTablePublicContext<T>) => GetContextMenuItemsReturnType;
-type InfiniteTablePropGetContextMenuItems<T> = (param: {
+declare type InfiniteTablePropGetContextMenuItems<T> = (param: {
     event: React$1.MouseEvent;
 } & Partial<InfiniteTableRowInfoDataDiscriminatorWithColumn<T>>, params: InfiniteTablePublicContext<T>) => GetContextMenuItemsReturnType;
-type InfiniteTablePropGetFilterOperatorMenuItems<T> = (defaultItems: Exclude<MenuProps['items'], undefined>, params: {
+declare type InfiniteTablePropGetFilterOperatorMenuItems<T> = (defaultItems: Exclude<MenuProps['items'], undefined>, params: {
     column: InfiniteTableComputedColumn<T>;
     filterTypes: DataSourceProps<T>['filterTypes'];
     columnFilterValue: DataSourceFilterValueItem<T> | null;
@@ -2756,23 +2756,23 @@ type InfiniteTablePropGetFilterOperatorMenuItems<T> = (defaultItems: Exclude<Men
     getComputed: () => InfiniteTableComputedValues<T>;
     actions: InfiniteTableActions<T>;
 }) => MenuProps['items'];
-type InfiniteTablePropKeyboardNavigation = 'cell' | 'row' | false;
-type InfiniteTablePropKeyboardSelection = boolean;
-type InfiniteTablePropHeaderOptions = {
+declare type InfiniteTablePropKeyboardNavigation = 'cell' | 'row' | false;
+declare type InfiniteTablePropKeyboardSelection = boolean;
+declare type InfiniteTablePropHeaderOptions = {
     alwaysReserveSpaceForSortIcon: boolean;
 };
-type InfiniteTablePropAutoSizeColumnsKey = string | number | {
+declare type InfiniteTablePropAutoSizeColumnsKey = string | number | {
     key: string | number;
     columnsToSkip?: string[];
     columnsToResize?: string[];
     includeHeader?: boolean;
 };
-type Scrollbars = {
+declare type Scrollbars = {
     vertical: boolean;
     horizontal: boolean;
 };
-type ScrollAdjustPosition = 'start' | 'end' | 'center';
-type InfiniteColumnEditorContextType<T> = {
+declare type ScrollAdjustPosition = 'start' | 'end' | 'center';
+declare type InfiniteColumnEditorContextType<T> = {
     api: InfiniteTableApi<T>;
     initialValue: any;
     value: any;
@@ -2789,20 +2789,20 @@ declare function debounce(fn: Function, { wait }: {
     wait: number;
 }): (...args: any[]) => void;
 
-declare function Menu(props: MenuProps & HTMLProps<HTMLDivElement>): JSX.Element;
+declare function Menu(props: MenuProps & HTMLProps<HTMLDivElement>): React$1.JSX.Element;
 declare namespace Menu {
     var defaultProps: MenuProps & {
         __is_infinite_menu_component?: boolean | undefined;
     };
 }
 
-declare function StringFilterEditor<T>(): JSX.Element;
-declare function NumberFilterEditor<T>(): JSX.Element;
+declare function StringFilterEditor<T>(): React$1.JSX.Element;
+declare function NumberFilterEditor<T>(): React$1.JSX.Element;
 
-type ForwardPropsToStateFnResult<TYPE_PROPS, TYPE_RESULT, COMPONENT_SETUP_STATE> = {
+declare type ForwardPropsToStateFnResult<TYPE_PROPS, TYPE_RESULT, COMPONENT_SETUP_STATE> = {
     [propName in keyof TYPE_PROPS & keyof TYPE_RESULT]: 1 | ((value: TYPE_PROPS[propName], setupState: COMPONENT_SETUP_STATE) => TYPE_RESULT[propName]);
 };
-type ComponentStateRootConfig<T_PROPS, COMPONENT_MAPPED_STATE, COMPONENT_SETUP_STATE = {}, COMPONENT_DERIVED_STATE = {}, T_ACTIONS = {}, T_PARENT_STATE = {}> = {
+declare type ComponentStateRootConfig<T_PROPS, COMPONENT_MAPPED_STATE, COMPONENT_SETUP_STATE = {}, COMPONENT_DERIVED_STATE = {}, T_ACTIONS = {}, T_PARENT_STATE = {}> = {
     debugName?: string;
     initSetupState?: () => COMPONENT_SETUP_STATE;
     layoutEffect?: boolean;
@@ -2843,7 +2843,7 @@ declare function getComponentStateRoot<T_PROPS, COMPONENT_MAPPED_STATE extends o
 }>;
 declare function useComponentState<COMPONENT_STATE>(): ComponentStateContext<COMPONENT_STATE, ComponentStateGeneratedActions<COMPONENT_STATE>>;
 
-type InterceptedMapFns<K, V> = {
+declare type InterceptedMapFns<K, V> = {
     set?: (k: K, v: V) => void;
     beforeClear?: (map: Map<K, V>) => void;
     clear?: () => void;
@@ -2861,7 +2861,7 @@ declare function useEffectWithChanges<T>(fn: (changes: Record<keyof T, any>, pre
 
 declare const components: {
     CheckBox: typeof InfiniteCheckBox;
-    LoadMask: (props: LoadMaskProps) => JSX.Element;
+    LoadMask: (props: LoadMaskProps) => React$1.JSX.Element;
     MenuIcon: typeof MenuIcon;
     StringFilterEditor: typeof StringFilterEditor;
     NumberFilterEditor: typeof NumberFilterEditor;
