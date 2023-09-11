@@ -512,7 +512,7 @@ interface LogFn {
 declare class Logger {
     debug: LogFn;
     error: LogFn;
-    constructor(channelName: string);
+    constructor(_channelName: string);
 }
 
 interface ScrollPosition {
