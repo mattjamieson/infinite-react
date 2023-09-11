@@ -1,3 +1,4 @@
+import { createRequire } from 'module'; const require = createRequire(import.meta.url);
 "use strict";
 var __create = Object.create;
 var __defProp = Object.defineProperty;
@@ -34,6 +35,9 @@ var __objRest = (source, exclude) => {
         target[prop] = source[prop];
     }
   return target;
+};
+var __esm = (fn, res) => function __init() {
+  return fn && (res = (0, fn[__getOwnPropNames(fn)[0]])(fn = 0)), res;
 };
 var __commonJS = (cb, mod) => function __require() {
   return mod || (0, cb[__getOwnPropNames(cb)[0]])((mod = { exports: {} }).exports, mod), mod.exports;
@@ -80,9 +84,16 @@ var __async = (__this, __arguments, generator) => {
   });
 };
 
+// node_modules/tsup/assets/cjs_shims.js
+var init_cjs_shims = __esm({
+  "node_modules/tsup/assets/cjs_shims.js"() {
+  }
+});
+
 // ../node_modules/ms/index.js
 var require_ms = __commonJS({
   "../node_modules/ms/index.js"(exports, module2) {
+    init_cjs_shims();
     var s = 1e3;
     var m = s * 60;
     var h = m * 60;
@@ -199,6 +210,7 @@ var require_ms = __commonJS({
 // ../node_modules/debug/src/common.js
 var require_common = __commonJS({
   "../node_modules/debug/src/common.js"(exports, module2) {
+    init_cjs_shims();
     function setup(env) {
       createDebug.debug = createDebug;
       createDebug.default = createDebug;
@@ -362,6 +374,7 @@ var require_common = __commonJS({
 // ../node_modules/debug/src/browser.js
 var require_browser = __commonJS({
   "../node_modules/debug/src/browser.js"(exports, module2) {
+    init_cjs_shims();
     exports.formatArgs = formatArgs;
     exports.save = save;
     exports.load = load;
@@ -532,6 +545,7 @@ var require_browser = __commonJS({
 var require_has_flag = __commonJS({
   "../node_modules/has-flag/index.js"(exports, module2) {
     "use strict";
+    init_cjs_shims();
     module2.exports = (flag, argv = process.argv) => {
       const prefix = flag.startsWith("-") ? "" : flag.length === 1 ? "-" : "--";
       const position2 = argv.indexOf(prefix + flag);
@@ -545,6 +559,7 @@ var require_has_flag = __commonJS({
 var require_supports_color = __commonJS({
   "../node_modules/supports-color/index.js"(exports, module2) {
     "use strict";
+    init_cjs_shims();
     var os = require("os");
     var tty = require("tty");
     var hasFlag = require_has_flag();
@@ -646,6 +661,7 @@ var require_supports_color = __commonJS({
 // ../node_modules/debug/src/node.js
 var require_node = __commonJS({
   "../node_modules/debug/src/node.js"(exports, module2) {
+    init_cjs_shims();
     var tty = require("tty");
     var util = require("util");
     exports.init = init;
@@ -820,6 +836,7 @@ var require_node = __commonJS({
 // ../node_modules/debug/src/index.js
 var require_src = __commonJS({
   "../node_modules/debug/src/index.js"(exports, module2) {
+    init_cjs_shims();
     if (typeof process === "undefined" || process.type === "renderer" || process.browser === true || process.__nwjs) {
       module2.exports = require_browser();
     } else {
@@ -831,6 +848,7 @@ var require_src = __commonJS({
 // ../node_modules/binary-search/index.js
 var require_binary_search = __commonJS({
   "../node_modules/binary-search/index.js"(exports, module2) {
+    init_cjs_shims();
     module2.exports = function(haystack, needle, comparator, low, high) {
       var mid, cmp;
       if (low === void 0)
@@ -895,8 +913,10 @@ __export(src_exports, {
   useRowInfoReducers: () => useRowInfoReducers
 });
 module.exports = __toCommonJS(src_exports);
+init_cjs_shims();
 
 // src/components/utils/debounce.ts
+init_cjs_shims();
 function debounce(fn, { wait }) {
   let timeout = null;
   return function(...args) {
@@ -911,16 +931,20 @@ function debounce(fn, { wait }) {
 }
 
 // src/components/InfiniteTable/index.tsx
+init_cjs_shims();
 var React64 = __toESM(require("react"));
 
 // src/utils/join.ts
+init_cjs_shims();
 var join = (...args) => args.filter((x) => !!`${x}`).join(" ");
 
 // src/components/CSSNumericVariableWatch.tsx
+init_cjs_shims();
 var React2 = __toESM(require("react"));
 var import_react2 = require("react");
 
 // src/utils/debug.ts
+init_cjs_shims();
 var debug = require_src();
 var debugTable = debug(`InfiniteTable`);
 var dbg = (channelName) => {
@@ -947,6 +971,7 @@ var Logger = class {
 };
 
 // src/components/ResizeObserver/index.tsx
+init_cjs_shims();
 var React = __toESM(require("react"));
 var import_react = require("react");
 var setupResizeObserver = (node, callback, config = { debounce: 0 }) => {
@@ -1119,9 +1144,11 @@ var CSSNumericVariableWatch = (props) => {
 };
 
 // src/components/DataSource/publicHooks/useDataSource.ts
+init_cjs_shims();
 var React4 = __toESM(require("react"));
 
 // src/components/DataSource/DataSourceContext.ts
+init_cjs_shims();
 var React3 = __toESM(require("react"));
 var DSContext;
 function getDataSourceContext() {
@@ -1149,10 +1176,12 @@ function useDataSourceContextValue() {
 }
 
 // src/components/HeadlessTable/index.tsx
+init_cjs_shims();
 var React12 = __toESM(require("react"));
 var import_react10 = require("react");
 
 // src/components/VirtualList/SpacePlaceholder.tsx
+init_cjs_shims();
 var React5 = __toESM(require("react"));
 function SpacePlaceholderFn(props) {
   const { height, width, count } = props;
@@ -1178,13 +1207,16 @@ function SpacePlaceholderFn(props) {
 var SpacePlaceholder = React5.memo(SpacePlaceholderFn);
 
 // src/components/VirtualList/VirtualList.css.ts
+init_cjs_shims();
 var scrollTransformTargetCls = "VirtualList_scrollTransformTarget__mlx2t3";
 
 // src/components/VirtualScrollContainer/index.tsx
+init_cjs_shims();
 var React6 = __toESM(require("react"));
 var import_react4 = require("react");
 
 // src/components/hooks/useOnScroll.ts
+init_cjs_shims();
 var import_react3 = require("react");
 var useOnScroll = (domRef, onScroll) => {
   (0, import_react3.useEffect)(() => {
@@ -1206,7 +1238,11 @@ var useOnScroll = (domRef, onScroll) => {
   }, [onScroll, domRef == null ? void 0 : domRef.current]);
 };
 
+// src/components/VirtualScrollContainer/getScrollableClassName.ts
+init_cjs_shims();
+
 // src/components/VirtualScrollContainer/VirtualScrollContainer.css.ts
+init_cjs_shims();
 var ScrollableCls = { true: "VirtualScrollContainer_getOverflowFor_true__1ueijco1", false: "VirtualScrollContainer_getOverflowFor_false__1ueijco2", visible: "VirtualScrollContainer_getOverflowFor_visible__1ueijco3", auto: "VirtualScrollContainer_getOverflowFor_auto__1ueijco4", hidden: "VirtualScrollContainer_getOverflowFor_hidden__1ueijco5" };
 var ScrollableHorizontalCls = { true: "VirtualScrollContainer_getOverflowFor_true__1ueijco6", false: "VirtualScrollContainer_getOverflowFor_false__1ueijco7", visible: "VirtualScrollContainer_getOverflowFor_visible__1ueijco8", auto: "VirtualScrollContainer_getOverflowFor_auto__1ueijco9", hidden: "VirtualScrollContainer_getOverflowFor_hidden__1ueijcoa" };
 var ScrollableVerticalCls = { true: "VirtualScrollContainer_getOverflowFor_true__1ueijcob", false: "VirtualScrollContainer_getOverflowFor_false__1ueijcoc", visible: "VirtualScrollContainer_getOverflowFor_visible__1ueijcod", auto: "VirtualScrollContainer_getOverflowFor_auto__1ueijcoe", hidden: "VirtualScrollContainer_getOverflowFor_hidden__1ueijcof" };
@@ -1259,10 +1295,12 @@ var VirtualScrollContainer = React6.forwardRef(
 );
 
 // src/components/HeadlessTable/RawTable.tsx
+init_cjs_shims();
 var React9 = __toESM(require("react"));
 var import_react6 = require("react");
 
 // src/components/RawList/AvoidReactDiff.tsx
+init_cjs_shims();
 var React7 = __toESM(require("react"));
 var import_react5 = require("react");
 function AvoidReactDiffFn(props) {
@@ -1294,6 +1332,7 @@ function AvoidReactDiffFn(props) {
 var AvoidReactDiff = React7.memo(AvoidReactDiffFn);
 
 // src/components/utils/buildSubscriptionCallback.tsx
+init_cjs_shims();
 function buildSubscriptionCallback(withRaf = false) {
   let lastCallValue = null;
   let fns = [];
@@ -1337,9 +1376,11 @@ function buildSubscriptionCallback(withRaf = false) {
 }
 
 // src/components/HeadlessTable/ReactHeadlessTableRenderer.tsx
+init_cjs_shims();
 var React8 = __toESM(require("react"));
 
 // src/utils/mathIntersection.ts
+init_cjs_shims();
 function arrayIntersection(...arrays) {
   if (!arrays.length) {
     return [];
@@ -1360,7 +1401,11 @@ function arrayIntersection(...arrays) {
   });
 }
 
+// src/utils/raf.ts
+init_cjs_shims();
+
 // src/utils/getGlobal.ts
+init_cjs_shims();
 function getGlobal() {
   return globalThis;
 }
@@ -1374,16 +1419,22 @@ var cancelRaf = getGlobal().cancelAnimationFrame || ((timeoutId) => {
 });
 
 // src/utils/stripVar.ts
+init_cjs_shims();
 function stripVar(cssVariableWithVarString) {
   return cssVariableWithVarString.slice(4, -1);
 }
 
 // src/components/InfiniteTable/theme.css.ts
+init_cjs_shims();
 var InternalVars = { currentColumnWidth: "var(--currentColumnWidth__1slvgu90)", currentColumnTransformX: "var(--currentColumnTransformX__1slvgu91)", currentColumnTransformY: "var(--currentColumnTransformY__1slvgu92)", activeCellRowOffset: "var(--activeCellRowOffset__1slvgu93)", activeCellRowHeight: "var(--activeCellRowHeight__1slvgu94)", activeCellOffsetX: "var(--activeCellOffsetX__1slvgu95)", activeCellOffsetY: "var(--activeCellOffsetY__1slvgu96)", scrollTopForActiveRow: "var(--scrollTopForActiveRow__1slvgu97)", activeCellColWidth: "var(--activeCellColWidth__1slvgu98)", activeCellColOffset: "var(--activeCellColOffset__1slvgu99)", columnReorderEffectDurationAtIndex: "var(--columnReorderEffectDurationAtIndex__1slvgu9a)", columnWidthAtIndex: "var(--columnWidthAtIndex__1slvgu9b)", columnOffsetAtIndex: "var(--columnOffsetAtIndex__1slvgu9c)", columnOffsetAtIndexWhileReordering: "var(--columnOffsetAtIndexWhileReordering__1slvgu9d)", columnZIndexAtIndex: "var(--columnZIndexAtIndex__1slvgu9e)", pinnedStartWidth: "var(--pinnedStartWidth__1slvgu9f)", pinnedEndWidth: "var(--pinnedEndWidth__1slvgu9g)", pinnedEndOffset: "var(--pinnedEndOffset__1slvgu9h)", computedVisibleColumnsCount: "var(--computedVisibleColumnsCount__1slvgu9i)", baseZIndexForCells: "var(--baseZIndexForCells__1slvgu9j)", bodyWidth: "var(--bodyWidth__1slvgu9k)", bodyHeight: "var(--bodyHeight__1slvgu9l)", scrollbarWidthHorizontal: "var(--scrollbarWidthHorizontal__1slvgu9m)", scrollbarWidthVertical: "var(--scrollbarWidthVertical__1slvgu9n)", scrollLeft: "var(--scrollLeft__1slvgu9o)", scrollTop: "var(--scrollTop__1slvgu9p)" };
 var ThemeVars = { color: { accent: "var(--infinite-accent-color)", error: "var(--infinite-error-color)", color: "var(--infinite-color)" }, spacing: { "0": "var(--infinite-space-0)", "1": "var(--infinite-space-1)", "2": "var(--infinite-space-2)", "3": "var(--infinite-space-3)", "4": "var(--infinite-space-4)", "5": "var(--infinite-space-5)", "6": "var(--infinite-space-6)", "7": "var(--infinite-space-7)", "8": "var(--infinite-space-8)", "9": "var(--infinite-space-9)", "10": "var(--infinite-space-10)" }, fontSize: { "0": "var(--infinite-font-size-0)", "1": "var(--infinite-font-size-1)", "2": "var(--infinite-font-size-2)", "3": "var(--infinite-font-size-3)", "4": "var(--infinite-font-size-4)", "5": "var(--infinite-font-size-5)", "6": "var(--infinite-font-size-6)", "7": "var(--infinite-font-size-7)" }, fontFamily: "var(--infinite-font-family)", minHeight: "var(--infinite-min-height)", borderRadius: "var(--infinite-border-radius)", background: "var(--infinite-background)", iconSize: "var(--infinite-icon-size)", components: { LoadMask: { padding: "var(--infinite-load-mask-padding)", color: "var(--infinite-load-mask-color)", textBackground: "var(--infinite-load-mask-text-background)", overlayBackground: "var(--infinite-load-mask-overlay-background)", overlayOpacity: "var(--infinite-load-mask-overlay-opacity)", borderRadius: "var(--infinite-load-mask-border-radius)" }, Header: { background: "var(--infinite-header-background)", color: "var(--infinite-header-color)", columnHeaderHeight: "var(--infinite-column-header-height)" }, HeaderCell: { background: "var(--infinite-header-cell-background)", hoverBackground: "var(--infinite-header-cell-hover-background)", padding: "var(--infinite-header-cell-padding)", paddingX: "var(--infinite-header-cell-padding-x)", paddingY: "var(--infinite-header-cell-padding-y)", iconSize: "var(--infinite-header-cell-icon-size)", menuIconLineWidth: "var(--infinite-header-cell-menu-icon-line-width)", sortIconMargin: "var(--infinite-header-cell-sort-icon-margin)", resizeHandleActiveAreaWidth: "var(--infinite-resize-handle-active-area-width)", resizeHandleWidth: "var(--infinite-resize-handle-width)", resizeHandleHoverBackground: "var(--infinite-resize-handle-hover-background)", resizeHandleConstrainedHoverBackground: "var(--infinite-resize-handle-constrained-hover-background)", filterOperatorPaddingX: "var(--infinite-filter-operator-padding-x)", filterEditorPaddingX: "var(--infinite-filter-editor-padding-x)", filterEditorMarginX: "var(--infinite-filter-editor-margin-x)", filterOperatorPaddingY: "var(--infinite-filter-operator-padding-y)", filterEditorPaddingY: "var(--infinite-filter-editor-padding-y)", filterEditorMarginY: "var(--infinite-filter-editor-margin-y)" }, Cell: { padding: "var(--infinite-cell-padding)", borderWidth: "var(--infinite-cell-border-width)", border: "var(--infinite-cell-border)", borderInvisible: "var(--infinite-cell-border-invisible)", borderRadius: "var(--infinite-cell-border-radius)", reorderEffectDuration: "var(--infinite-column-reorder-effect-duration)", pinnedBorder: "var(--infinite-pinned-cell-border)", color: "var(--infinite-cell-color)", activeBackgroundAlpha: "var(--infinite-active-cell-background-alpha)", activeBackgroundAlphaWhenTableUnfocused: "var(--infinite-active-cell-background-alpha--table-unfocused)", activeBackground: "var(--infinite-active-cell-background)", activeBorderColor: "var(--infinite-active-cell-border-color)", activeBorderWidth: "var(--infinite-active-cell-border-width)", activeBorderStyle: "var(--infinite-active-cell-border-style)", activeBorder: "var(--infinite-active-cell-border)" }, SelectionCheckBox: { marginInline: "var(--infinite-selection-checkbox-margin-inline)" }, Menu: { background: "var(--infinite-menu-background)", color: "var(--infinite-menu-color)", padding: "var(--infinite-menu-padding)", cellPaddingVertical: "var(--infinite-menu-cell-padding-vertical)", cellPaddingHorizontal: "var(--infinite-menu-cell-padding-horizontal)", cellMarginVertical: "var(--infinite-menu-cell-margin-vertical)", itemDisabledBackground: "var(--infinite-menu-item-disabled-background)", itemActiveBackground: "var(--infinite-menu-item-active-background)", itemActiveOpacity: "var(--infinite-menu-item-active-opacity)", itemPressedOpacity: "var(--infinite-menu-item-pressed-opacity)", itemPressedBackground: "var(--infinite-menu-item-pressed-background)", itemDisabledOpacity: "var(--infinite-menu-item-disabled-opacity)", borderRadius: "var(--infinite-menu-border-radius)", shadowColor: "var(--infinite-menu-shadow-color)" }, Row: { background: "var(--infinite-row-background)", oddBackground: "var(--infinite-row-odd-background)", selectedBackground: "var(--infinite-row-selected-background)", activeBackground: "var(--infinite-active-row-background)", activeBorderColor: "var(--infinite-active-row-border-color)", activeBorderWidth: "var(--infinite-active-row-border-width)", activeBorderStyle: "var(--infinite-active-row-border-style)", activeBorder: "var(--infinite-active-row-border)", activeBackgroundAlpha: "var(--infinite-active-row-background-alpha)", activeBackgroundAlphaWhenTableUnfocused: "var(--infinite-active-row-background-alpha--table-unfocused)", hoverBackground: "var(--infinite-row-hover-background)", selectedHoverBackground: "var(--infinite-row-selected-hover-background)", groupRowBackground: "var(--infinite-group-row-background)", groupRowColumnNesting: "var(--infinite-group-row-column-nesting)", groupNesting: "var(--infinite-dont-override-group-row-nesting-length)", pointerEventsWhileScrolling: "var(--infinite-row-pointer-events-while-scrolling)" }, ColumnCell: { background: "var(--infinite-column-cell-bg-dont-override)" } } };
 var columnHeaderHeightName = "column-header-height";
 
+// src/components/InfiniteTable/utils/infiniteDOMUtils.ts
+init_cjs_shims();
+
 // src/utils/selectParent.ts
+init_cjs_shims();
 function selectParent(el, selector2) {
   let node = el;
   if (!node) {
@@ -1419,6 +1470,7 @@ function selectParentUntil(el, selector2, root) {
 }
 
 // src/components/InfiniteTable/internalProps.ts
+init_cjs_shims();
 var rootClassName2 = "Infinite";
 var internalProps = {
   rootClassName: rootClassName2
@@ -1527,6 +1579,7 @@ function setInfiniteScrollPosition(scrollPosition, node) {
 }
 
 // src/components/VirtualBrain/MatrixBrain.ts
+init_cjs_shims();
 var import_binary_search = __toESM(require_binary_search());
 var getRenderRangeCellCount = (range) => {
   const { start, end } = range;
@@ -2624,7 +2677,14 @@ var MatrixBrain = class extends Logger {
   }
 };
 
+// src/components/HeadlessTable/MappedCells.ts
+init_cjs_shims();
+
+// src/utils/DeepMap/index.ts
+init_cjs_shims();
+
 // src/utils/DeepMap/once.ts
+init_cjs_shims();
 function once(fn) {
   let called = false;
   let result = null;
@@ -2640,6 +2700,7 @@ function once(fn) {
 }
 
 // src/utils/DeepMap/sortAscending.ts
+init_cjs_shims();
 var sortAscending = (a, b) => a - b;
 
 // src/utils/DeepMap/index.ts
@@ -4232,10 +4293,12 @@ function RawTableFn(props) {
 var RawTable = React9.memo(RawTableFn);
 
 // src/components/InfiniteTable/components/ActiveRowIndicator.tsx
+init_cjs_shims();
 var React10 = __toESM(require("react"));
 var import_react8 = require("react");
 
 // src/components/hooks/useRerender.ts
+init_cjs_shims();
 var import_react7 = require("react");
 var useRerender = () => {
   const [state, setState] = (0, import_react7.useState)(0);
@@ -4248,10 +4311,12 @@ var useRerender = () => {
 };
 
 // src/components/InfiniteTable/components/ActiveCellIndicator.css.ts
+init_cjs_shims();
 var ActiveCellIndicatorCls = { visible: "ActiveCellIndicator_ActiveCellIndicatorCls_visible__nxbq1c2 ActiveCellIndicator_ActiveCellIndicator__nxbq1c1 utilities_pointerEvents_none__16lm1iwk utilities_position_sticky__16lm1iw4 utilities_left_0__16lm1iw1d utilities_top_0__16lm1iw1b", hidden: "ActiveCellIndicator_ActiveCellIndicatorCls_hidden__nxbq1c3 ActiveCellIndicator_ActiveCellIndicator__nxbq1c1 utilities_pointerEvents_none__16lm1iwk utilities_position_sticky__16lm1iw4 utilities_left_0__16lm1iw1d utilities_top_0__16lm1iw1b" };
 var ActiveIndicatorWrapperCls = "utilities_pointerEvents_none__16lm1iwk utilities_position_sticky__16lm1iw4 utilities_left_0__16lm1iw1d utilities_top_0__16lm1iw1b utilities_height_0__16lm1iw17 utilities_zIndex_1000000__16lm1iwt";
 
 // src/components/InfiniteTable/components/ActiveRowIndicator.css.ts
+init_cjs_shims();
 var ActiveRowIndicatorCls = { visible: "ActiveRowIndicator_ActiveRowIndicatorCls_visible__j26lrx1 ActiveRowIndicator_ActiveRowIndicator__j26lrx0 utilities_pointerEvents_none__16lm1iwk utilities_position_sticky__16lm1iw4 utilities_width_100%__16lm1iw1a utilities_top_0__16lm1iw1b utilities_left_0__16lm1iw1d", hidden: "ActiveRowIndicator_ActiveRowIndicatorCls_hidden__j26lrx2 ActiveRowIndicator_ActiveRowIndicator__j26lrx0 utilities_pointerEvents_none__16lm1iwk utilities_position_sticky__16lm1iw4 utilities_width_100%__16lm1iw1a utilities_top_0__16lm1iw1b utilities_left_0__16lm1iw1d" };
 
 // src/components/InfiniteTable/components/ActiveRowIndicator.tsx
@@ -4314,6 +4379,7 @@ var ActiveRowIndicator = React10.memo(
 );
 
 // src/components/InfiniteTable/components/ActiveCellIndicator.tsx
+init_cjs_shims();
 var React11 = __toESM(require("react"));
 var import_react9 = require("react");
 var { rootClassName: rootClassName4 } = internalProps;
@@ -4504,10 +4570,12 @@ function HeadlessTable(props) {
 }
 
 // src/components/hooks/useComponentState/index.tsx
+init_cjs_shims();
 var React13 = __toESM(require("react"));
 var import_react14 = require("react");
 
 // src/utils/proxyFnCall.ts
+init_cjs_shims();
 function proxyFn(fn, config) {
   const propertyReads = /* @__PURE__ */ new Set();
   function proxiedFn(...params) {
@@ -4533,11 +4601,16 @@ function proxyFn(fn, config) {
 }
 
 // src/utils/toUpperFirst.ts
+init_cjs_shims();
 var toUpperFirst = (s) => {
   return s ? s.substr(0, 1).toUpperCase() + s.substr(1) : s;
 };
 
+// src/components/utils/isControlled.ts
+init_cjs_shims();
+
 // src/components/utils/isControlledValue.ts
+init_cjs_shims();
 function isControlledValue(value) {
   const controlled = value !== void 0;
   return controlled;
@@ -4551,6 +4624,7 @@ function isControlled(propName, props) {
 }
 
 // src/components/hooks/useEffectOnceWithProperUnmount.ts
+init_cjs_shims();
 var import_react11 = require("react");
 var useEffectOnce = (effectCallback) => {
   const effectFunction = (0, import_react11.useCallback)(effectCallback, []);
@@ -4579,6 +4653,7 @@ var useEffectOnce = (effectCallback) => {
 };
 
 // src/components/hooks/useLatest.tsx
+init_cjs_shims();
 var import_react12 = require("react");
 function useLatest(value) {
   const ref = (0, import_react12.useRef)(value);
@@ -4587,6 +4662,7 @@ function useLatest(value) {
 }
 
 // src/components/hooks/usePrevious.ts
+init_cjs_shims();
 var import_react13 = require("react");
 var usePrevious = (value, initialValue) => {
   const ref = (0, import_react13.useRef)(initialValue === void 0 ? value : initialValue);
@@ -4882,15 +4958,21 @@ function useComponentState() {
   return React13.useContext(Context);
 }
 
+// src/components/InfiniteTable/components/InfiniteTableBody/index.tsx
+init_cjs_shims();
+
 // src/components/InfiniteTable/components/InfiniteTableBody/InfiniteTableBody.tsx
+init_cjs_shims();
 var React14 = __toESM(require("react"));
 
 // src/components/InfiniteTable/hooks/useInternalProps.ts
+init_cjs_shims();
 var useInternalProps = () => {
   return internalProps;
 };
 
 // src/components/InfiniteTable/utilities.css.ts
+init_cjs_shims();
 var absoluteCover = "utilities_position_absolute__16lm1iw2 utilities_top_0__16lm1iw1b utilities_left_0__16lm1iw1d utilities_right_0__16lm1iw1i utilities_bottom_0__16lm1iw1g";
 var alignItems = { center: "utilities_alignItems_center__16lm1iw1p", stretch: "utilities_alignItems_stretch__16lm1iw1q" };
 var cssEllipsisClassName = "utilities_whiteSpace_nowrap__16lm1iw22 utilities_textOverflow_ellipsis__16lm1iw23 utilities_overflow_hidden__16lm1iw1w";
@@ -4927,7 +5009,11 @@ var InfiniteTableBody = React14.forwardRef(function InfiniteTableBody2(props, re
   );
 });
 
+// src/components/InfiniteTable/components/InfiniteTableFooter/index.tsx
+init_cjs_shims();
+
 // src/components/InfiniteTable/components/InfiniteTableFooter/InfiniteTableFooter.tsx
+init_cjs_shims();
 var React15 = __toESM(require("react"));
 var InfiniteTableFooter = React15.forwardRef(
   function InfiniteTableFooter2(props, ref) {
@@ -4950,11 +5036,13 @@ var InfiniteTableFooter = React15.forwardRef(
 );
 
 // src/components/InfiniteTable/components/InfiniteTableHeader/InfiniteTableHeaderCell.tsx
+init_cjs_shims();
 var React42 = __toESM(require("react"));
 var import_react28 = require("react");
 var import_react_dom = require("react-dom");
 
 // src/utils/keyMirror.ts
+init_cjs_shims();
 function keyMirror(obj) {
   const result = {};
   Object.keys(obj).forEach((key) => {
@@ -4963,7 +5051,14 @@ function keyMirror(obj) {
   return result;
 }
 
+// src/components/DataSource/defaultFilterTypes.ts
+init_cjs_shims();
+
+// src/components/InfiniteTable/components/icons/IncludesOperatorIcon.tsx
+init_cjs_shims();
+
 // src/components/InfiniteTable/components/icons/Icon.tsx
+init_cjs_shims();
 var React16 = __toESM(require("react"));
 var Icon = (props) => {
   var _a;
@@ -4987,64 +5082,76 @@ var IncludesOperatorIcon = (props) => {
 };
 
 // src/components/InfiniteTable/components/icons/EndsWithOperatorIcon.tsx
+init_cjs_shims();
 var React18 = __toESM(require("react"));
 var EndsWithOperatorIcon = (props) => {
   return /* @__PURE__ */ React18.createElement(Icon, __spreadValues({}, props), /* @__PURE__ */ React18.createElement("path", { d: "M11.14 4L6.43 16H8.36L9.32 13.43H14.67L15.64 16H17.57L12.86 4M12 6.29L14.03 11.71H9.96M20 14V18H2V20H22V14Z" }));
 };
 
 // src/components/InfiniteTable/components/icons/EqualOperatorIcon.tsx
+init_cjs_shims();
 var React19 = __toESM(require("react"));
 var EqualOperatorIcon = (props) => {
   return /* @__PURE__ */ React19.createElement(Icon, __spreadValues({}, props), /* @__PURE__ */ React19.createElement("path", { d: "M19,10H5V8H19V10M19,16H5V14H19V16Z" }));
 };
 
 // src/components/InfiniteTable/components/icons/GTEOperatorIcon.tsx
+init_cjs_shims();
 var React20 = __toESM(require("react"));
 var GTEOperatorIcon = (props) => {
   return /* @__PURE__ */ React20.createElement(Icon, __spreadValues({}, props), /* @__PURE__ */ React20.createElement("path", { d: "M6.5,2.27L20,10.14L6.5,18L5.5,16.27L16.03,10.14L5.5,4L6.5,2.27M20,20V22H5V20H20Z" }));
 };
 
 // src/components/InfiniteTable/components/icons/GTOperatorIcon.tsx
+init_cjs_shims();
 var React21 = __toESM(require("react"));
 var GTOperatorIcon = (props) => {
   return /* @__PURE__ */ React21.createElement(Icon, __spreadValues({}, props), /* @__PURE__ */ React21.createElement("path", { d: "M5.5,4.14L4.5,5.86L15,12L4.5,18.14L5.5,19.86L19,12L5.5,4.14Z" }));
 };
 
 // src/components/InfiniteTable/components/icons/LTEOperatorIcon.tsx
+init_cjs_shims();
 var React22 = __toESM(require("react"));
 var LTEOperatorIcon = (props) => {
   return /* @__PURE__ */ React22.createElement(Icon, __spreadValues({}, props), /* @__PURE__ */ React22.createElement("path", { d: "M18.5,2.27L5,10.14L18.5,18L19.5,16.27L8.97,10.14L19.5,4L18.5,2.27M5,20V22H20V20H5Z" }));
 };
 
 // src/components/InfiniteTable/components/icons/LTOperatorIcon.tsx
+init_cjs_shims();
 var React23 = __toESM(require("react"));
 var LTOperatorIcon = (props) => {
   return /* @__PURE__ */ React23.createElement(Icon, __spreadValues({}, props), /* @__PURE__ */ React23.createElement("path", { d: "M18.5,4.14L19.5,5.86L8.97,12L19.5,18.14L18.5,19.86L5,12L18.5,4.14Z" }));
 };
 
 // src/components/InfiniteTable/components/icons/NotEqualOperatorIcon.tsx
+init_cjs_shims();
 var React24 = __toESM(require("react"));
 var NotEqualOperatorIcon = (props) => {
   return /* @__PURE__ */ React24.createElement(Icon, __spreadValues({}, props), /* @__PURE__ */ React24.createElement("path", { d: "M21,10H9V8H21V10M21,16H9V14H21V16M4,5H6V16H4V5M6,18V20H4V18H6Z" }));
 };
 
 // src/components/InfiniteTable/components/icons/StartsWithOperatorIcon.tsx
+init_cjs_shims();
 var React25 = __toESM(require("react"));
 var StartsWithOperatorIcon = (props) => {
   return /* @__PURE__ */ React25.createElement(Icon, __spreadValues({}, props), /* @__PURE__ */ React25.createElement("path", { d: "M11.14 4L6.43 16H8.36L9.32 13.43H14.67L15.64 16H17.57L12.86 4M12 6.29L14.03 11.71H9.96M4 18V15H2V20H22V18Z" }));
 };
 
 // src/components/InfiniteTable/components/FilterEditors.tsx
+init_cjs_shims();
 var React29 = __toESM(require("react"));
 
 // src/components/InfiniteTable/components/InfiniteTableHeader/InfiniteTableColumnHeaderFilter.tsx
+init_cjs_shims();
 var React28 = __toESM(require("react"));
 var import_react19 = require("react");
 
 // src/components/InfiniteTable/hooks/useInfiniteTable.ts
+init_cjs_shims();
 var import_react16 = require("react");
 
 // src/components/InfiniteTable/InfiniteTableContext.ts
+init_cjs_shims();
 var import_react15 = require("react");
 var TableContext;
 function getInfiniteTableContext() {
@@ -5063,10 +5170,15 @@ var useInfiniteTable = () => {
 };
 
 // src/components/InfiniteTable/components/icons/FilterIcon.tsx
+init_cjs_shims();
 var React26 = __toESM(require("react"));
 var import_react17 = require("react");
 
+// src/components/InfiniteTable/components/InfiniteTableHeader/header.css.ts
+init_cjs_shims();
+
 // ../node_modules/@vanilla-extract/recipes/createRuntimeFn/dist/vanilla-extract-recipes-createRuntimeFn.esm.js
+init_cjs_shims();
 function _defineProperty(obj, key, value) {
   if (key in obj) {
     Object.defineProperty(obj, key, {
@@ -5158,9 +5270,11 @@ var HeaderSortIconRecipe = createRuntimeFn({ defaultClassName: "", variantClassN
 var HeaderWrapperCls = "header_HeaderWrapperCls__12zfob124 utilities_overflow_hidden__16lm1iw1w utilities_position_relative__16lm1iw1 utilities_display_flex__16lm1iwy utilities_flexFlow_row__16lm1iw1n";
 
 // src/components/InfiniteTable/components/icons/InfiniteTableIconClassName.ts
+init_cjs_shims();
 var InfiniteTableIconClassName = "InfiniteTableIcon";
 
 // src/components/InfiniteTable/components/icons/FilterIcon.css.ts
+init_cjs_shims();
 var FilterIconCls = "FilterIcon_FilterIconCls__6aunoi0 utilities_display_flex__16lm1iwy utilities_flexFlow_column__16lm1iw1l utilities_position_relative__16lm1iw1 utilities_justifyContent_spaceAround__16lm1iw1t utilities_alignItems_center__16lm1iw1p";
 
 // src/components/InfiniteTable/components/icons/FilterIcon.tsx
@@ -5228,7 +5342,17 @@ function FilterIcon(props) {
   );
 }
 
+// src/components/InfiniteTable/components/InfiniteTableHeader/getColumnLabel.ts
+init_cjs_shims();
+
+// src/components/InfiniteTable/api/getColumnApi.ts
+init_cjs_shims();
+
+// src/components/InfiniteTable/utils/getComputedColumns.ts
+init_cjs_shims();
+
 // src/components/flexbox/index.ts
+init_cjs_shims();
 var computeFlex = (params) => {
   const {
     availableSize,
@@ -5599,6 +5723,7 @@ var computeGroupResize = (params) => {
 };
 
 // src/components/utils/getScrollbarWidth.ts
+init_cjs_shims();
 var scrollbarWidth;
 function getScrollbarWidth() {
   var _a, _b;
@@ -5621,6 +5746,7 @@ function getScrollbarWidth() {
 }
 
 // src/components/InfiniteTable/utils/adjustColumnOrderForPinning.ts
+init_cjs_shims();
 var order = ["start", void 0, "end"];
 var adjustColumnOrderForPinning = (columnOrder, columnPinning) => {
   if (columnPinning && Object.keys(columnPinning).length > 0) {
@@ -5643,6 +5769,7 @@ var adjustColumnOrderForPinning = (columnOrder, columnPinning) => {
 };
 
 // src/components/InfiniteTable/utils/assignFiltered.ts
+init_cjs_shims();
 function assignFiltered(filterFn, target, ...rest) {
   const result = target;
   rest.forEach((obj) => {
@@ -5662,6 +5789,7 @@ function assignExcept(exceptKeys, target, ...rest) {
 }
 
 // src/components/InfiniteTable/utils/getColumnComputedType.ts
+init_cjs_shims();
 var emptyType = Object.freeze({});
 var defaultFilterTypes = {
   string: emptyType,
@@ -6267,6 +6395,7 @@ function getColumnLabel(colIdOrCol, context) {
 }
 
 // src/components/InfiniteTable/components/InfiniteTableHeader/InfiniteTableColumnHeaderFilterContext.ts
+init_cjs_shims();
 var import_react18 = __toESM(require("react"));
 var InfiniteTableColumnHeaderFilterClassName = `${rootClassName2}HeaderCell__filter`;
 var InfiniteTableColumnHeaderFilterOperatorClassName = `${rootClassName2}HeaderCell__filterOperator`;
@@ -6551,6 +6680,7 @@ function getFilterTypes() {
 var defaultFilterTypes2 = getFilterTypes();
 
 // src/components/InfiniteTable/hooks/useCellClassName.ts
+init_cjs_shims();
 function useCellClassName(column, baseClasses, variants, extraFlags) {
   var _a;
   const result = [...baseClasses];
@@ -6610,9 +6740,11 @@ function useCellClassName(column, baseClasses, variants, extraFlags) {
 }
 
 // src/components/InfiniteTable/hooks/useColumnPointerEvents.ts
+init_cjs_shims();
 var import_react20 = require("react");
 
 // src/components/InfiniteTable/InfiniteCls.css.ts
+init_cjs_shims();
 var FooterCls = "utilities_position_relative__16lm1iw1";
 var InfiniteCls = "InfiniteCls_InfiniteCls__1yeub2v0 utilities_position_relative__16lm1iw1 utilities_display_flex__16lm1iwy utilities_flexFlow_column__16lm1iw1l utilities_boxSizingBorderBox__16lm1iw0";
 var InfiniteClsHasPinnedEnd = "InfiniteCls_InfiniteClsHasPinnedEnd__1yeub2vo";
@@ -6623,7 +6755,11 @@ var PinnedEndIndicatorBorder = "InfiniteCls_PinnedEndIndicatorBorder__1yeub2vr I
 var PinnedRowsContainerClsVariants = createRuntimeFn({ defaultClassName: "", variantClassNames: { pinned: { start: "InfiniteCls_PinnedRowsContainerClsVariants_pinned_start__1yeub2vi", end: "InfiniteCls_PinnedRowsContainerClsVariants_pinned_end__1yeub2vj", false: "InfiniteCls_PinnedRowsContainerClsVariants_pinned_false__1yeub2vk" } }, defaultVariants: {}, compoundVariants: [] });
 var PinnedStartIndicatorBorder = "InfiniteCls_PinnedStartIndicatorBorder__1yeub2vq InfiniteCls_PinnedIndicatorCls__1yeub2vp utilities_position_absolute__16lm1iw2 utilities_top_0__16lm1iw1b utilities_cursor_colResize__16lm1iwj utilities_userSelect_none__16lm1iw16 utilities_width_0__16lm1iw19 utilities_visibility_hidden__16lm1iw20 utilities_pointerEvents_none__16lm1iwk utilities_zIndex_10000000__16lm1iwu";
 
+// src/components/InfiniteTable/hooks/useDOMProps.ts
+init_cjs_shims();
+
 // src/components/InfiniteTable/utils/rafFn.ts
+init_cjs_shims();
 var rafFn = (fn) => {
   let rafId = 0;
   return (...args) => {
@@ -6823,9 +6959,11 @@ function useDOMProps(initialDOMProps) {
 }
 
 // src/components/InfiniteTable/hooks/reorderColumnsOnDrag.ts
+init_cjs_shims();
 var import_binary_search2 = __toESM(require_binary_search());
 
 // src/components/InfiniteTable/utils/moveXatY.ts
+init_cjs_shims();
 var moveXatY = (arr, dragIndex, dropIndex) => {
   arr = [...arr];
   if (dragIndex === dropIndex || arr[dragIndex] === void 0 || arr[dropIndex] === void 0) {
@@ -6843,6 +6981,7 @@ var moveXatY = (arr, dragIndex, dropIndex) => {
 };
 
 // src/components/InfiniteTable/utils/progressiveSpeedScroller.ts
+init_cjs_shims();
 var progressiveSpeedScroller = (staticOptions) => {
   let scrollLeftRafId = null;
   let scrollRightRafId = null;
@@ -7194,6 +7333,7 @@ function reorderColumnsOnDrag(params) {
 }
 
 // src/utils/shallowEqualObjects.ts
+init_cjs_shims();
 function shallowEqualObjects(objA, objB, ignoreKeys) {
   if (objA === objB) {
     return true;
@@ -7226,6 +7366,7 @@ function shallowEqualObjects(objA, objB, ignoreKeys) {
 }
 
 // src/components/InfiniteTable/hooks/adjustColumnOrderForAllColumns.ts
+init_cjs_shims();
 function adjustColumnOrderForAllColumns(options) {
   const {
     newColumnOrder,
@@ -7453,16 +7594,20 @@ var useColumnPointerEvents = ({
 };
 
 // src/components/InfiniteTable/utils/RenderHookComponentForInfinite.tsx
+init_cjs_shims();
 var React37 = __toESM(require("react"));
 
 // src/components/InfiniteTable/components/InfiniteTableRow/InfiniteTableColumnCell.tsx
+init_cjs_shims();
 var React36 = __toESM(require("react"));
 var import_react24 = require("react");
 
 // src/components/InfiniteTable/utils/getColumnForGroupBy.tsx
+init_cjs_shims();
 var React32 = __toESM(require("react"));
 
 // src/components/DataSource/state/rowInfoStatus.ts
+init_cjs_shims();
 var showLoadingIcon = (rowInfo) => {
   if (rowInfo.dataSourceHasGrouping) {
     return rowInfo.isGroupRow ? rowInfo.childrenLoading || !rowInfo.selfLoaded : !rowInfo.selfLoaded;
@@ -7471,10 +7616,12 @@ var showLoadingIcon = (rowInfo) => {
 };
 
 // src/components/InfiniteTable/components/icons/ExpanderIcon.tsx
+init_cjs_shims();
 var React30 = __toESM(require("react"));
 var import_react21 = require("react");
 
 // src/components/InfiniteTable/components/icons/ExpanderIcon.css.ts
+init_cjs_shims();
 var ExpanderIconCls = "utilities_fill_accentColor__16lm1iw7 utilities_flex_none__16lm1iwm utilities_cursor_pointer__16lm1iwh";
 var ExpanderIconClsVariants = createRuntimeFn({ defaultClassName: "", variantClassNames: { expanded: { true: "utilities_transform_rotate90__16lm1iwf", false: "ExpanderIcon_ExpanderIconClsVariants_expanded_false__198z9782" }, direction: { end: "ExpanderIcon_ExpanderIconClsVariants_direction_end__198z9783", start: "ExpanderIcon_ExpanderIconClsVariants_direction_start__198z9784" } }, defaultVariants: {}, compoundVariants: [[{ expanded: false, direction: "end" }, "utilities_transform_rotate180__16lm1iwg"]] });
 
@@ -7525,9 +7672,11 @@ function ExpanderIcon(props) {
 }
 
 // src/components/InfiniteTable/components/icons/LoadingIcon.tsx
+init_cjs_shims();
 var React31 = __toESM(require("react"));
 
 // src/components/InfiniteTable/components/icons/LoadingIcon.css.ts
+init_cjs_shims();
 var LoadingIconCls = "utilities_stroke_accentColor__16lm1iwa utilities_flex_none__16lm1iwm utilities_cursor_pointer__16lm1iwh";
 
 // src/components/InfiniteTable/components/icons/LoadingIcon.tsx
@@ -7578,6 +7727,7 @@ var LoadingIcon = (props) => {
 };
 
 // src/components/InfiniteTable/components/InfiniteTableRow/row.css.ts
+init_cjs_shims();
 var GroupRowExpanderCls = createRuntimeFn({ defaultClassName: "", variantClassNames: { align: { start: "row_GroupRowExpanderCls_align_start__7pupv0b", center: "row_GroupRowExpanderCls_align_center__7pupv0c", end: "row_GroupRowExpanderCls_align_end__7pupv0d" } }, defaultVariants: {}, compoundVariants: [] });
 var RowClsRecipe = createRuntimeFn({ defaultClassName: "row_RowCls__7pupv00", variantClassNames: { zebra: { false: "row_RowClsRecipe_zebra_false__7pupv02", even: "row_RowClsRecipe_zebra_even__7pupv03", odd: "row_RowClsRecipe_zebra_odd__7pupv04" }, groupRow: { true: "row_RowClsRecipe_groupRow_true__7pupv05", false: "row_RowClsRecipe_groupRow_false__7pupv06" }, inlineGroupRow: { true: "row_RowClsRecipe_inlineGroupRow_true__7pupv07", false: "row_RowClsRecipe_inlineGroupRow_false__7pupv08" }, showHoverRows: { true: "row_RowClsRecipe_showHoverRows_true__7pupv09", false: "row_RowClsRecipe_showHoverRows_false__7pupv0a" } }, defaultVariants: {}, compoundVariants: [] });
 var RowHoverCls = "row_RowHoverCls__7pupv01";
@@ -7747,6 +7897,7 @@ function getSingleGroupColumn(options, toggleGroupRow, groupColumnFromProps) {
 }
 
 // src/components/InfiniteTable/utils/objectValuesExcept.ts
+init_cjs_shims();
 function objectValuesExcept(obj, exceptList) {
   const result = [];
   for (const k in obj)
@@ -7757,15 +7908,18 @@ function objectValuesExcept(obj, exceptList) {
 }
 
 // src/components/InfiniteTable/components/cell.css.ts
+init_cjs_shims();
 var ColumnCellCls = "cell_ColumnCellCls__1eexc2a6 cell_CellCls__1eexc2a5 utilities_display_flex__16lm1iwy utilities_flexFlow_row__16lm1iw1n utilities_alignItems_center__16lm1iw1p utilities_position_absolute__16lm1iw2 utilities_willChange_transform__16lm1iw21 utilities_whiteSpace_nowrap__16lm1iw22 utilities_userSelect_none__16lm1iw16";
 var ColumnCellRecipe = createRuntimeFn({ defaultClassName: "cell_ColumnCellRecipe__1eexc2a8", variantClassNames: { dragging: { false: "cell_ColumnCellRecipe_dragging_false__1eexc2a9", true: "cell_ColumnCellRecipe_dragging_true__1eexc2aa" }, align: { start: "cell_ColumnCellRecipe_align_start__1eexc2ab", end: "cell_ColumnCellRecipe_align_end__1eexc2ac", center: "cell_ColumnCellRecipe_align_center__1eexc2ad" }, verticalAlign: { start: "cell_ColumnCellRecipe_verticalAlign_start__1eexc2ae", end: "cell_ColumnCellRecipe_verticalAlign_end__1eexc2af", center: "cell_ColumnCellRecipe_verticalAlign_center__1eexc2ag" }, rowActive: { false: "cell_ColumnCellRecipe_rowActive_false__1eexc2ah", true: "cell_ColumnCellRecipe_rowActive_true__1eexc2ai" }, groupRow: { false: "cell_ColumnCellRecipe_groupRow_false__1eexc2aj", true: "cell_ColumnCellRecipe_groupRow_true__1eexc2ak" }, groupCell: { false: "cell_ColumnCellRecipe_groupCell_false__1eexc2al", true: "cell_ColumnCellRecipe_groupCell_true__1eexc2am" }, zebra: { false: "cell_ColumnCellRecipe_zebra_false__1eexc2an", even: "cell_ColumnCellRecipe_zebra_even__1eexc2ao", odd: "cell_ColumnCellRecipe_zebra_odd__1eexc2ap" }, rowSelected: { true: "cell_ColumnCellRecipe_rowSelected_true__1eexc2aq", false: "cell_ColumnCellRecipe_rowSelected_false__1eexc2ar", null: "cell_ColumnCellRecipe_rowSelected_null__1eexc2as" }, first: { true: "cell_ColumnCellRecipe_first_true__1eexc2at", false: "cell_ColumnCellRecipe_first_false__1eexc2au" }, last: { true: "cell_ColumnCellRecipe_last_true__1eexc2av", false: "cell_ColumnCellRecipe_last_false__1eexc2aw" }, groupByField: { true: "cell_ColumnCellRecipe_groupByField_true__1eexc2ax", false: "cell_ColumnCellRecipe_groupByField_false__1eexc2ay" }, firstInCategory: { true: "cell_ColumnCellRecipe_firstInCategory_true__1eexc2az", false: "cell_ColumnCellRecipe_firstInCategory_false__1eexc2a10" }, lastInCategory: { true: "cell_ColumnCellRecipe_lastInCategory_true__1eexc2a11", false: "cell_ColumnCellRecipe_lastInCategory_false__1eexc2a12" }, pinned: { start: "cell_ColumnCellRecipe_pinned_start__1eexc2a13", end: "cell_ColumnCellRecipe_pinned_end__1eexc2a14", false: "cell_ColumnCellRecipe_pinned_false__1eexc2a15" }, filtered: { true: "cell_ColumnCellRecipe_filtered_true__1eexc2a16", false: "cell_ColumnCellRecipe_filtered_false__1eexc2a17" } }, defaultVariants: {}, compoundVariants: [[{ pinned: "start", lastInCategory: true }, "cell_ColumnCellRecipe_compound_0__1eexc2a18"], [{ pinned: "start", firstInCategory: true }, "cell_ColumnCellRecipe_compound_1__1eexc2a19"], [{ pinned: "end", firstInCategory: true }, "cell_ColumnCellRecipe_compound_2__1eexc2a1a"], [{ pinned: "end", lastInCategory: true }, "cell_ColumnCellRecipe_compound_3__1eexc2a1b"], [{ align: "center", groupCell: false }, "cell_ColumnCellRecipe_compound_4__1eexc2a1c"]] });
 var SelectionCheckboxCls = "cell_SelectionCheckboxCls__1eexc2a7";
 
 // src/components/InfiniteTable/components/CheckBox.tsx
+init_cjs_shims();
 var React33 = __toESM(require("react"));
 var import_react22 = require("react");
 
 // src/components/InfiniteTable/components/CheckBox.css.ts
+init_cjs_shims();
 var CheckBoxCls = "CheckBox_CheckBoxCls__qz8ht90 utilities_cursor_pointer__16lm1iwh";
 
 // src/components/InfiniteTable/components/CheckBox.tsx
@@ -7823,6 +7977,7 @@ function InfiniteCheckBox(props) {
 }
 
 // src/components/InfiniteTable/components/InfiniteTableRow/columnRendering.tsx
+init_cjs_shims();
 function isColumnWithField(c) {
   return typeof c.field === "string";
 }
@@ -8086,6 +8241,7 @@ function getFormattedValueContextForCell(options) {
 }
 
 // src/components/InfiniteTable/components/InfiniteTableRow/InfiniteTableCell.tsx
+init_cjs_shims();
 var React34 = __toESM(require("react"));
 var { rootClassName: rootClassName5 } = internalProps;
 var InfiniteTableCellClassName = `${rootClassName5}Cell`;
@@ -8172,6 +8328,7 @@ var InfiniteTableCell = React34.memo(
 );
 
 // src/components/InfiniteTable/components/InfiniteTableRow/InfiniteTableColumnEditor.tsx
+init_cjs_shims();
 var React35 = __toESM(require("react"));
 var import_react23 = require("react");
 function InfiniteTableColumnEditor() {
@@ -8595,6 +8752,7 @@ function useInfiniteColumnEditor() {
 }
 
 // src/components/RenderHookComponent.tsx
+init_cjs_shims();
 function RenderHookComponent(props) {
   var _a;
   return (_a = props.render(props.renderParam)) != null ? _a : null;
@@ -8627,6 +8785,7 @@ function RenderHeaderCellHookComponent(props) {
 }
 
 // src/components/InfiniteTable/components/icons/MenuIcon.tsx
+init_cjs_shims();
 var React38 = __toESM(require("react"));
 var defaultLineStyle2 = {
   width: "100%",
@@ -8672,10 +8831,12 @@ function MenuIcon(props) {
 }
 
 // src/components/InfiniteTable/components/icons/SortIcon.tsx
+init_cjs_shims();
 var React39 = __toESM(require("react"));
 var import_react25 = require("react");
 
 // src/components/InfiniteTable/components/icons/SortIcon.css.ts
+init_cjs_shims();
 var SortIconCls = "SortIcon_SortIconCls__1ek6mqy0 utilities_display_flex__16lm1iwy utilities_flexFlow_column__16lm1iw1l utilities_position_relative__16lm1iw1 utilities_justifyContent_spaceAround__16lm1iw1t";
 
 // src/components/InfiniteTable/components/icons/SortIcon.tsx
@@ -8765,14 +8926,17 @@ function SortIcon(props) {
 }
 
 // src/components/InfiniteTable/components/InfiniteTableHeader/useColumnResizeHandle.tsx
+init_cjs_shims();
 var React41 = __toESM(require("react"));
 var import_react27 = require("react");
 
 // src/components/InfiniteTable/components/InfiniteTableHeader/ResizeHandle/index.tsx
+init_cjs_shims();
 var import_react26 = require("react");
 var React40 = __toESM(require("react"));
 
 // src/components/InfiniteTable/components/InfiniteTableHeader/ResizeHandle/columnResizer.ts
+init_cjs_shims();
 function getColumnResizer(colIndex, {
   columns,
   shareSpaceOnResize,
@@ -8882,6 +9046,7 @@ function getColumnGroupResizer(colIndexes, config) {
 }
 
 // src/components/InfiniteTable/components/InfiniteTableHeader/ResizeHandle/ResizeHandle.css.ts
+init_cjs_shims();
 var ResizeHandleCls = "ResizeHandle_ResizeHandleCls__zneyzh0 utilities_position_absolute__16lm1iw2 utilities_top_0__16lm1iw1b utilities_right_0__16lm1iw1i utilities_bottom_0__16lm1iw1g utilities_cursor_colResize__16lm1iwj utilities_overflow_hidden__16lm1iw1w";
 var ResizeHandleDraggerClsRecipe = createRuntimeFn({ defaultClassName: "ResizeHandle_ResizeHandleDraggerClsRecipe__zneyzhb utilities_position_absolute__16lm1iw2 utilities_top_0__16lm1iw1b utilities_bottom_0__16lm1iw1g", variantClassNames: { constrained: { false: "ResizeHandle_ResizeHandleDraggerClsRecipe_constrained_false__zneyzhc", true: "ResizeHandle_ResizeHandleDraggerClsRecipe_constrained_true__zneyzhd" } }, defaultVariants: {}, compoundVariants: [] });
 var ResizeHandleRecipeCls = createRuntimeFn({ defaultClassName: "", variantClassNames: { computedPinned: { start: "ResizeHandle_ResizeHandleRecipeCls_computedPinned_start__zneyzh1", end: "ResizeHandle_ResizeHandleRecipeCls_computedPinned_end__zneyzh2 utilities_left_0__16lm1iw1d utilities_right_auto__16lm1iw1k", false: "ResizeHandle_ResizeHandleRecipeCls_computedPinned_false__zneyzh3" }, computedFirstInCategory: { true: "ResizeHandle_ResizeHandleRecipeCls_computedFirstInCategory_true__zneyzh4", false: "ResizeHandle_ResizeHandleRecipeCls_computedFirstInCategory_false__zneyzh5" }, computedLastInCategory: { true: "ResizeHandle_ResizeHandleRecipeCls_computedLastInCategory_true__zneyzh6", false: "ResizeHandle_ResizeHandleRecipeCls_computedLastInCategory_false__zneyzh7" } }, defaultVariants: {}, compoundVariants: [[{ computedPinned: "end", computedLastInCategory: false, computedFirstInCategory: true }, "ResizeHandle_ResizeHandleRecipeCls_compound_0__zneyzh8"], [{ computedPinned: false, computedFirstInCategory: false, computedLastInCategory: true }, "ResizeHandle_ResizeHandleRecipeCls_compound_1__zneyzh9"], [{ computedPinned: "start", computedFirstInCategory: false, computedLastInCategory: true }, "ResizeHandle_ResizeHandleRecipeCls_compound_2__zneyzha"]] });
@@ -9432,9 +9597,11 @@ function useInfiniteHeaderCell() {
 }
 
 // src/components/InfiniteTable/components/InfiniteTableHeader/InfiniteTableHeaderWrapper.tsx
+init_cjs_shims();
 var React47 = __toESM(require("react"));
 
 // src/components/InfiniteTable/components/InfiniteTableHeader/buildColumnAndGroupTree.ts
+init_cjs_shims();
 function buildColumnAndGroupTree(columns, columnGroups, columnGroupsDepthsMap, columnGroupsMaxDepth) {
   const map2 = /* @__PURE__ */ new Map();
   const temporaryMap = /* @__PURE__ */ new Map();
@@ -9538,17 +9705,21 @@ function assignGroupOffsetsAndComputedWidths(items, groupOffset = 0) {
 }
 
 // src/components/InfiniteTable/components/InfiniteTableHeader/InfiniteTableHeader.tsx
+init_cjs_shims();
 var React46 = __toESM(require("react"));
 var import_react31 = require("react");
 
 // src/components/InfiniteTable/components/InfiniteTableHeader/InfiniteTableHeaderGroup.tsx
+init_cjs_shims();
 var React45 = __toESM(require("react"));
 
 // src/components/InfiniteTable/components/InfiniteTableHeader/useColumnGroupResizeHandle.tsx
+init_cjs_shims();
 var React44 = __toESM(require("react"));
 var import_react30 = require("react");
 
 // src/components/InfiniteTable/components/InfiniteTableHeader/ResizeHandle/GroupResizeHandle.tsx
+init_cjs_shims();
 var import_react29 = require("react");
 var React43 = __toESM(require("react"));
 var { rootClassName: rootClassName9 } = internalProps;
@@ -10019,10 +10190,12 @@ function TableHeaderWrapper(props) {
 }
 
 // src/components/InfiniteTable/components/InfiniteTableLicenseFooter/index.tsx
+init_cjs_shims();
 var React48 = __toESM(require("react"));
 var import_react32 = require("react");
 
 // src/components/utils/decamelize.ts
+init_cjs_shims();
 function decamelize(str, options) {
   const { separator } = options != null ? options : { separator: "-" };
   return str.replace(/([a-z\d])([A-Z])/g, "$1" + separator + "$2").replace(
@@ -10123,9 +10296,11 @@ var InfiniteTableLicenseFooter = React48.forwardRef(
 );
 
 // src/components/InfiniteTable/components/LoadMask.tsx
+init_cjs_shims();
 var React49 = __toESM(require("react"));
 
 // src/components/InfiniteTable/components/LoadMask.css.ts
+init_cjs_shims();
 var LoadMaskCls = { visible: "LoadMask_LoadMaskCls_visible__qy58ya1 LoadMask_LoadMaskBaseCls__qy58ya0 utilities_position_absolute__16lm1iw2 utilities_top_0__16lm1iw1b utilities_left_0__16lm1iw1d utilities_right_0__16lm1iw1i utilities_bottom_0__16lm1iw1g", hidden: "LoadMask_LoadMaskCls_hidden__qy58ya2 LoadMask_LoadMaskBaseCls__qy58ya0 utilities_position_absolute__16lm1iw2 utilities_top_0__16lm1iw1b utilities_left_0__16lm1iw1d utilities_right_0__16lm1iw1i utilities_bottom_0__16lm1iw1g" };
 var LoadMaskOverlayCls = "LoadMask_LoadMaskOverlayCls__qy58ya3 utilities_position_absolute__16lm1iw2 utilities_top_0__16lm1iw1b utilities_left_0__16lm1iw1d utilities_right_0__16lm1iw1i utilities_bottom_0__16lm1iw1g";
 var LoadMaskTextCls = "LoadMask_LoadMaskTextCls__qy58ya4";
@@ -10146,7 +10321,14 @@ function LoadMaskFn(props) {
 }
 var LoadMask = React49.memo(LoadMaskFn);
 
+// src/components/InfiniteTable/api/getImperativeApi.ts
+init_cjs_shims();
+
+// src/utils/groupAndPivot/index.ts
+init_cjs_shims();
+
 // src/utils/deepClone.ts
+init_cjs_shims();
 function cloneArray(arr) {
   return arr.map(deepClone);
 }
@@ -10178,11 +10360,13 @@ function deepClone(source) {
 }
 
 // src/utils/groupAndPivot/defaultToKey.ts
+init_cjs_shims();
 function DEFAULT_TO_KEY(value) {
   return value;
 }
 
 // src/utils/groupAndPivot/sharedValueGetterParamsFlyweightObject.ts
+init_cjs_shims();
 var sharedValueGetterParamsFlyweightObject = Object.seal({
   data: null,
   field: null
@@ -10809,10 +10993,15 @@ function enhancedFlatten(param) {
 }
 
 // src/components/DataSource/index.tsx
+init_cjs_shims();
 var React50 = __toESM(require("react"));
 var import_react35 = require("react");
 
+// src/utils/multisort/index.ts
+init_cjs_shims();
+
 // src/utils/multisort/sortTypes.ts
+init_cjs_shims();
 var numberComparator = function(first, second) {
   return first - second;
 };
@@ -10916,7 +11105,11 @@ var getMultisortFunction = (sortInfo, get) => {
   };
 };
 
+// src/components/DataSource/getDataSourceApi.ts
+init_cjs_shims();
+
 // src/components/DataSource/DataSourceCache.ts
+init_cjs_shims();
 var DataSourceCache = class {
   constructor() {
     this.affectedFields = /* @__PURE__ */ new Set();
@@ -11310,7 +11503,11 @@ function getCacheAffectedParts(state) {
   };
 }
 
+// src/components/DataSource/GroupRowsState.ts
+init_cjs_shims();
+
 // src/components/DataSource/BooleanDeepCollectionState.ts
+init_cjs_shims();
 var BooleanDeepCollectionState = class {
   constructor(state) {
     const stateObject = state instanceof Object.getPrototypeOf(this).constructor ? (
@@ -11510,9 +11707,11 @@ var GroupRowsState = class extends BooleanDeepCollectionState {
 };
 
 // src/components/DataSource/privateHooks/useLoadData.ts
+init_cjs_shims();
 var import_react34 = require("react");
 
 // src/components/hooks/useEffectWithChanges.ts
+init_cjs_shims();
 var import_react33 = require("react");
 function useEffectWithChanges(fn, deps) {
   const prevRef = (0, import_react33.useRef)({});
@@ -11543,7 +11742,11 @@ function useEffectWithChanges(fn, deps) {
   }, useEffectDeps);
 }
 
+// src/components/DataSource/state/reducer.ts
+init_cjs_shims();
+
 // src/utils/groupAndPivot/getPivotColumnsAndColumnGroups.ts
+init_cjs_shims();
 function prepareColumn(column) {
   const { pivotByAtIndex: pivotByForColumn, pivotAggregator } = column;
   if (pivotByForColumn == null ? void 0 : pivotByForColumn.column) {
@@ -11778,7 +11981,11 @@ function getPivotColumnsAndColumnGroups({
   return result;
 }
 
+// src/components/InfiniteTable/api/getSelectionApi.ts
+init_cjs_shims();
+
 // src/utils/groupAndPivot/getGroupKeysForDataItem.ts
+init_cjs_shims();
 function getGroupKeysForDataItem(data, groupBy) {
   return groupBy.reduce((groupKeys, groupBy2) => {
     const { field: groupByProperty, valueGetter, toKey: groupToKey } = groupBy2;
@@ -12030,6 +12237,7 @@ function getSelectionApi(param) {
 }
 
 // src/components/DataSource/RowSelectionState.ts
+init_cjs_shims();
 var RowSelectionState = class {
   constructor(state, getConfig, _forTestingOnly) {
     this.selectedRows = null;
@@ -12518,6 +12726,7 @@ var RowSelectionState = class {
 };
 
 // src/components/DataSource/state/initRowInfoReducers.ts
+init_cjs_shims();
 function initRowInfoReducers(reducers) {
   if (!reducers) {
     return void 0;
@@ -12960,6 +13169,7 @@ function concludeReducer(params) {
 }
 
 // src/components/DataSource/privateHooks/getChangeDetect.ts
+init_cjs_shims();
 function getChangeDetect() {
   var _a;
   const perfNow = (_a = getGlobal().performance) == null ? void 0 : _a.now();
@@ -13517,7 +13727,11 @@ function lazyLoadRange(options, cache) {
   }, initialPromise);
 }
 
+// src/components/DataSource/state/getInitialState.ts
+init_cjs_shims();
+
 // src/components/utils/discardCallsWithEqualArg.ts
+init_cjs_shims();
 var map = /* @__PURE__ */ new WeakMap();
 var getCompareDefault = (a) => a;
 function discardCallsWithEqualArg(fn, timeframe = 50, getCompareObject) {
@@ -13549,6 +13763,7 @@ function discardCallsWithEqualArg(fn, timeframe = 50, getCompareObject) {
 }
 
 // src/components/DataSource/Indexer.ts
+init_cjs_shims();
 var Indexer = class {
   constructor() {
     this.primaryKeyToData = /* @__PURE__ */ new Map();
@@ -13608,6 +13823,7 @@ var Indexer = class {
 };
 
 // src/components/DataSource/state/normalizeSortInfo.ts
+init_cjs_shims();
 var EMPTY_ARRAY = Object.freeze(
   []
 );
@@ -13949,6 +14165,7 @@ function getInterceptActions() {
 }
 
 // src/components/DataSource/types.ts
+init_cjs_shims();
 var DataSourceActionType = /* @__PURE__ */ ((DataSourceActionType2) => {
   DataSourceActionType2["INIT"] = "INIT";
   return DataSourceActionType2;
@@ -14029,6 +14246,7 @@ function useRowInfoReducers() {
 }
 
 // src/components/InfiniteTable/api/realignColumnContextMenu.ts
+init_cjs_shims();
 function realignColumnContextMenu(param) {
   const { getComputed, getState, actions } = param;
   const columnMenuVisibleForColumnId = getState().columnMenuVisibleForColumnId;
@@ -14072,6 +14290,7 @@ function realignColumnContextMenu(param) {
 }
 
 // src/components/InfiniteTable/types/Utility.ts
+init_cjs_shims();
 function notNullable(value) {
   if (value === null || value === void 0)
     return false;
@@ -14876,6 +15095,7 @@ function getImperativeApi(context) {
 }
 
 // src/components/InfiniteTable/hooks/useAutoSizeColumns.ts
+init_cjs_shims();
 var import_react36 = require("react");
 var OFFSET = 10;
 function getColumnContentMaxWidths(domRef, options) {
@@ -15010,10 +15230,12 @@ function useAutoSizeColumns() {
 }
 
 // src/components/InfiniteTable/hooks/useCellRendering.tsx
+init_cjs_shims();
 var import_react37 = require("react");
 var React51 = __toESM(require("react"));
 
 // src/components/InfiniteTable/hooks/useYourBrain.ts
+init_cjs_shims();
 function useYourBrain(param) {
   const {
     dataArray,
@@ -15205,9 +15427,11 @@ function useCellRendering(param) {
 }
 
 // src/components/InfiniteTable/hooks/useComputed.ts
+init_cjs_shims();
 var import_react48 = require("react");
 
 // src/components/InfiniteTable/utils/MultiRowSelector.ts
+init_cjs_shims();
 function ensureMinMax(start, end) {
   return start < end ? [start, end] : [end, start];
 }
@@ -15285,9 +15509,11 @@ var MultiRowSelector = class {
 };
 
 // src/components/InfiniteTable/hooks/useColumnGroups.ts
+init_cjs_shims();
 var import_react39 = require("react");
 
 // src/components/hooks/useInterceptedMap.ts
+init_cjs_shims();
 var import_react38 = require("react");
 function interceptMap(map2, fns) {
   const { set, delete: deleteKey, clear } = map2;
@@ -15331,6 +15557,7 @@ function interceptMap(map2, fns) {
 }
 
 // src/components/InfiniteTable/state/computeColumnGroupsDepths.ts
+init_cjs_shims();
 function computeColumnGroupsDepths(columnGroups) {
   const map2 = /* @__PURE__ */ new Map();
   columnGroups.forEach((colGroup, colGroupId) => {
@@ -15408,6 +15635,7 @@ function useColumnGroups() {
 }
 
 // src/components/InfiniteTable/hooks/useColumnRowspan.ts
+init_cjs_shims();
 var import_react40 = require("react");
 function useColumnRowspan(computedVisibleColumns) {
   const { getState: getDataSourceState } = useDataSourceContextValue();
@@ -15439,6 +15667,7 @@ function useColumnRowspan(computedVisibleColumns) {
 }
 
 // src/components/InfiniteTable/hooks/useColumnSizeFn.ts
+init_cjs_shims();
 var import_react41 = require("react");
 var debug4 = dbg("useColumnSizeFn");
 function useColumnSizeFn(columns) {
@@ -15456,12 +15685,15 @@ function useColumnSizeFn(columns) {
 }
 
 // src/components/InfiniteTable/hooks/useColumnsWhen.ts
+init_cjs_shims();
 var import_react44 = require("react");
 
 // src/components/InfiniteTable/state/getInitialState.ts
+init_cjs_shims();
 var import_react42 = require("react");
 
 // src/components/VirtualBrain/ScrollListener.ts
+init_cjs_shims();
 var initialScrollPosition = {
   scrollLeft: 0,
   scrollTop: 0
@@ -15497,6 +15729,7 @@ var ScrollListener = class {
 };
 
 // src/components/InfiniteTable/utils/toMap.ts
+init_cjs_shims();
 function toMap(mapOrObject, weakMapCache) {
   if (!mapOrObject) {
     return /* @__PURE__ */ new Map();
@@ -15776,6 +16009,7 @@ var mapPropsToState = (params) => {
 };
 
 // src/components/InfiniteTable/state/getColumnVisibilityForHideEmptyGroupColumns.ts
+init_cjs_shims();
 function getGroupColumnsMapForComputedColumns(computedColumns, groupByMap) {
   const computedGroupColumns = /* @__PURE__ */ new Map();
   computedColumns.forEach(
@@ -15866,6 +16100,7 @@ function getColumnVisibilityForHideEmptyGroupColumns(params) {
 }
 
 // src/components/InfiniteTable/hooks/useToggleGroupRow.ts
+init_cjs_shims();
 var import_react43 = require("react");
 function useToggleGroupRow() {
   const { getState: getDataSourceState, componentActions: dataSourceActions } = useDataSourceContextValue();
@@ -16310,9 +16545,11 @@ function getColumnsWhenGrouping(params) {
 }
 
 // src/components/InfiniteTable/hooks/useComputedColumns.ts
+init_cjs_shims();
 var import_react46 = require("react");
 
 // src/components/InfiniteTable/hooks/useRerenderOnKeyChange.ts
+init_cjs_shims();
 var import_react45 = require("react");
 var useRerenderOnKeyChange = (map2) => {
   const [renderId, rerender] = useRerender();
@@ -16463,6 +16700,7 @@ var useComputedColumns = ({
 };
 
 // src/components/InfiniteTable/hooks/useScrollbars.ts
+init_cjs_shims();
 var import_react47 = require("react");
 var INITIAL_SCROLLBARS = {
   vertical: false,
@@ -16635,9 +16873,14 @@ function useComputed() {
 }
 
 // src/components/InfiniteTable/hooks/useLicense/useLicense.ts
+init_cjs_shims();
 var import_react49 = require("react");
 
+// src/components/InfiniteTable/hooks/useLicense/decode.ts
+init_cjs_shims();
+
 // src/components/InfiniteTable/hooks/useLicense/crc32.ts
+init_cjs_shims();
 var DEFAULT_ReversedPolynomial = 3988292384;
 function crc32_generate(reversedPolynomial = DEFAULT_ReversedPolynomial) {
   var table = new Array();
@@ -16818,6 +17061,7 @@ var useLicense = (licenseKey = "") => {
 };
 
 // src/components/InfiniteTable/hooks/useScrollToActiveCell.ts
+init_cjs_shims();
 var import_react50 = require("react");
 var RETRIES = 10;
 function useScrollToActiveCell(activeCellIndex, dataCount, imperativeApi) {
@@ -16857,6 +17101,7 @@ function useScrollToActiveCell(activeCellIndex, dataCount, imperativeApi) {
 }
 
 // src/components/InfiniteTable/hooks/useScrollToActiveRow.ts
+init_cjs_shims();
 var import_react51 = require("react");
 var RETRIES2 = 10;
 function useScrollToActiveRow(activeRowIndex, dataCount, imperativeApi) {
@@ -16894,12 +17139,15 @@ function useScrollToActiveRow(activeRowIndex, dataCount, imperativeApi) {
 }
 
 // src/components/InfiniteTable/utils/toCSSVarName.ts
+init_cjs_shims();
 var toCSSVarName = (value) => `--infinite-${value}`;
 
 // src/components/InfiniteTable/eventHandlers/index.ts
+init_cjs_shims();
 var import_react52 = require("react");
 
 // src/components/InfiniteTable/eventHandlers/onCellClick.ts
+init_cjs_shims();
 function onCellClick(context, event) {
   var _a, _b;
   updateRowSelectionOnCellClick(context, event);
@@ -16962,7 +17210,14 @@ function updateRowSelectionOnCellClick(context, event) {
   return false;
 }
 
+// src/components/InfiniteTable/eventHandlers/onKeyDown.ts
+init_cjs_shims();
+
+// src/components/InfiniteTable/eventHandlers/keyboardNavigation.ts
+init_cjs_shims();
+
 // src/components/utils/clamp.ts
+init_cjs_shims();
 function clamp(value, min, max) {
   return Math.min(Math.max(value, min), max);
 }
@@ -17181,6 +17436,7 @@ function handleKeyboardNavigation(options, event) {
 }
 
 // src/components/InfiniteTable/eventHandlers/keyboardSelection.ts
+init_cjs_shims();
 var validKeys2 = {
   Enter: true,
   " ": true,
@@ -17251,7 +17507,11 @@ function handleKeyboardSelection(context, keyboardEvent) {
   return false;
 }
 
+// src/components/InfiniteTable/eventHandlers/handleBrowserFocusChangeOnKeyboardNavigation.ts
+init_cjs_shims();
+
 // src/components/InfiniteTable/utils/getFocusableChildrenForNode.ts
+init_cjs_shims();
 var selector = [
   "input",
   "textarea",
@@ -17272,9 +17532,11 @@ var getFirstFocusableChildForNode = (node) => {
 };
 
 // src/components/InfiniteTable/utils/cellFocusUtils.ts
+init_cjs_shims();
 var import_binary_search3 = __toESM(require_binary_search());
 
 // src/components/InfiniteTable/utils/waitForFunction.ts
+init_cjs_shims();
 function waitForFunction(fn, tickTimeout = 10, maxTimeout = 300) {
   return __async(this, null, function* () {
     return new Promise((resolve, reject) => {
@@ -17639,14 +17901,20 @@ function useDOMEventHandlers() {
 }
 
 // src/components/InfiniteTable/hooks/useColumnMenu.ts
+init_cjs_shims();
 var import_react57 = require("react");
 
 // src/components/hooks/useOverlay/index.tsx
+init_cjs_shims();
 var React52 = __toESM(require("react"));
 var import_react53 = require("react");
 var import_react_dom2 = require("react-dom");
 
+// src/utils/pageGeometry/alignment/index.ts
+init_cjs_shims();
+
 // src/utils/pageGeometry/Point.ts
+init_cjs_shims();
 var Point = class {
   constructor(point) {
     this.top = 0;
@@ -17679,7 +17947,17 @@ var Point = class {
   }
 };
 
+// src/utils/pageGeometry/Rectangle.ts
+init_cjs_shims();
+
+// src/utils/pageGeometry/ConvexPoly.ts
+init_cjs_shims();
+
+// src/utils/pageGeometry/PolyWithPoints.ts
+init_cjs_shims();
+
 // src/utils/pageGeometry/polyContainsPoint.ts
+init_cjs_shims();
 function getAngle(p, center) {
   let angle = Math.atan2(p.top - center.top, p.left - center.left);
   if (angle <= 0) {
@@ -17974,6 +18252,7 @@ function getRectanglePointForPosition(rect, position2) {
 }
 
 // src/components/Menu/propToIdentifyMenu.ts
+init_cjs_shims();
 var propToIdentifyMenu = "__is_infinite_menu_component";
 
 // src/components/hooks/useOverlay/index.tsx
@@ -18225,18 +18504,23 @@ function useOverlay(params) {
 }
 
 // src/components/InfiniteTable/utils/getMenuForColumn.tsx
+init_cjs_shims();
 var React58 = __toESM(require("react"));
 
 // src/components/Menu/index.tsx
+init_cjs_shims();
 var React56 = __toESM(require("react"));
 
 // src/components/Menu/getMenuState.tsx
+init_cjs_shims();
 var React54 = __toESM(require("react"));
 
 // src/components/Menu/childrenToRuntimeItems.tsx
+init_cjs_shims();
 var React53 = __toESM(require("react"));
 
 // src/components/Menu/MenuCls.css.ts
+init_cjs_shims();
 var MenuCls = "MenuCls_MenuCls__db3arf0 utilities_boxSizingBorderBox__16lm1iw0 utilities_position_relative__16lm1iw1 utilities_display_inlineGrid__16lm1iw15 utilities_flexFlow_column__16lm1iw1l utilities_margin_none__16lm1iw8";
 var MenuItemCls = createRuntimeFn({ defaultClassName: "MenuCls_MenuItemCls__db3arf2 utilities_display_flex__16lm1iwy utilities_alignItems_center__16lm1iw1p utilities_userSelect_none__16lm1iw16", variantClassNames: { disabled: { true: "MenuCls_MenuItemCls_disabled_true__db3arf3 utilities_cursor_default__16lm1iwi utilities_userSelect_none__16lm1iw16", false: "utilities_cursor_pointer__16lm1iwh" }, active: { true: "MenuCls_MenuItemCls_active_true__db3arf5", false: "MenuCls_MenuItemCls_active_false__db3arf6" }, pressed: { false: "MenuCls_MenuItemCls_pressed_false__db3arf7", true: "MenuCls_MenuItemCls_pressed_true__db3arf8" }, keyboardActive: { true: "MenuCls_MenuItemCls_keyboardActive_true__db3arf9", false: "MenuCls_MenuItemCls_keyboardActive_false__db3arfa" } }, defaultVariants: {}, compoundVariants: [[{ active: true, disabled: false }, "MenuCls_MenuItemCls_compound_0__db3arfb"], [{ pressed: true, active: true, disabled: false }, "MenuCls_MenuItemCls_compound_1__db3arfc"]] });
 var MenuRowCls = "MenuCls_MenuRowCls__db3arf1";
@@ -18375,10 +18659,15 @@ var deriveStateFromProps2 = (params) => {
 };
 
 // src/components/Menu/Menu.tsx
+init_cjs_shims();
 var React55 = __toESM(require("react"));
 var import_react56 = require("react");
 
+// src/components/Menu/MenuTriangleContext.ts
+init_cjs_shims();
+
 // src/utils/pageGeometry/Triangle.ts
+init_cjs_shims();
 var Triangle = class extends ConvexPoly {
   // uncommenting this here breaks our tests - WHAT????
   // it's just narrowing down the type of the points member variable
@@ -18595,6 +18884,7 @@ var MenuTriangleContext = class {
 };
 
 // src/components/Menu/MenuContext.ts
+init_cjs_shims();
 var import_react54 = require("react");
 var MenuContext = (0, import_react54.createContext)(null);
 function useMenuContext() {
@@ -18603,6 +18893,7 @@ function useMenuContext() {
 }
 
 // src/components/hooks/useMounted.ts
+init_cjs_shims();
 var import_react55 = require("react");
 function useMounted() {
   let mountedRef = (0, import_react55.useRef)(true);
@@ -19211,6 +19502,7 @@ var menuDefaultProps = {
 Menu.defaultProps = menuDefaultProps;
 
 // src/components/InfiniteTable/utils/defaultGetColumnMenuItems.tsx
+init_cjs_shims();
 var React57 = __toESM(require("react"));
 function defaultGetColumnMenuItems(_items, params) {
   const { columnApi, column, getComputed, api } = params;
@@ -19480,6 +19772,7 @@ function useColumnMenu() {
 }
 
 // src/components/InfiniteTable/components/FocusDetect.tsx
+init_cjs_shims();
 var React59 = __toESM(require("react"));
 var import_react58 = require("react");
 var style = {
@@ -19525,6 +19818,7 @@ function FocusDetect() {
 }
 
 // src/components/InfiniteTable/hooks/useEditingCallbackProps.ts
+init_cjs_shims();
 var import_react59 = require("react");
 function useOnEditCancelled() {
   const context = useInfiniteTable();
@@ -19641,18 +19935,22 @@ function useEditingCallbackProps() {
 }
 
 // src/components/InfiniteTable/hooks/useColumnFilterOperatorMenu.ts
+init_cjs_shims();
 var import_react60 = require("react");
 
 // src/components/InfiniteTable/utils/getFilterOperatorMenuForColumn.tsx
+init_cjs_shims();
 var React62 = __toESM(require("react"));
 
 // src/components/InfiniteTable/components/icons/ClearIcon.tsx
+init_cjs_shims();
 var React60 = __toESM(require("react"));
 var ClearIcon = (props) => {
   return /* @__PURE__ */ React60.createElement(Icon, __spreadValues({}, props), /* @__PURE__ */ React60.createElement("path", { d: "M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" }));
 };
 
 // src/components/InfiniteTable/components/icons/DoneIcon.tsx
+init_cjs_shims();
 var React61 = __toESM(require("react"));
 var DoneIcon = (props) => {
   return /* @__PURE__ */ React61.createElement(Icon, __spreadValues({}, props), /* @__PURE__ */ React61.createElement("path", { d: "m9.55 19-6.725-6.725L5.25 9.85l4.3 4.325 9.225-9.225 2.425 2.4Z" }));
@@ -19838,9 +20136,11 @@ function useColumnFilterOperatorMenu() {
 }
 
 // src/components/InfiniteTable/hooks/useContextMenu.ts
+init_cjs_shims();
 var import_react61 = require("react");
 
 // src/components/InfiniteTable/utils/getCellContextMenu.tsx
+init_cjs_shims();
 var React63 = __toESM(require("react"));
 function getCellContextMenu(cellLocation, context, onHideIntent) {
   var _a;
@@ -20138,6 +20438,9 @@ function useTableContextMenu() {
   return { menuPortal };
 }
 
+// src/components/InfiniteTable/types/index.ts
+init_cjs_shims();
+
 // src/components/InfiniteTable/index.tsx
 var InfiniteTableClassName = internalProps.rootClassName;
 var HOVERED_CLASS_NAMES = [RowHoverCls, "InfiniteColumnCell--hovered"];
@@ -20408,6 +20711,9 @@ InfiniteTable.defaultProps = {
   rowHeight: 40,
   columnHeaderHeight: toCSSVarName(columnHeaderHeightName)
 };
+
+// src/components/Menu/MenuProps.ts
+init_cjs_shims();
 
 // src/index.tsx
 var components = {
