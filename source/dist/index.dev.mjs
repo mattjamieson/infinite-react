@@ -1,4 +1,10 @@
-import { createRequire } from 'module'; const require = createRequire(import.meta.url);
+const require = function(module) {
+  if (module === module) {
+    return { isatty: function() { return false; } };
+  } else {
+    return undefined;
+  }
+}
 var __create = Object.create;
 var __defProp = Object.defineProperty;
 var __defProps = Object.defineProperties;
